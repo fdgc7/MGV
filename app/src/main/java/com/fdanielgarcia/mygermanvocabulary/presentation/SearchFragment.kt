@@ -1,5 +1,6 @@
 package com.fdanielgarcia.mygermanvocabulary.presentation
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +9,13 @@ import androidx.fragment.app.Fragment
 import com.fdanielgarcia.mygermanvocabulary.data.VocabularyList
 import com.fdanielgarcia.mygermanvocabulary.databinding.FragmentSearchBinding
 import com.fdanielgarcia.mygermanvocabulary.domain.Vocabulary
+import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 
 class SearchFragment : Fragment() {
-    private lateinit var vocabularyList: VocabularyList
+    val listManagement by lazy { ListManagement(activity as Activity) }
+    private var vocabularyList = VocabularyList()
     private lateinit var vocabulary: Vocabulary
-
     private var _binding: FragmentSearchBinding? = null
 
     // This property is only valid between onCreateView and
@@ -37,6 +39,7 @@ class SearchFragment : Fragment() {
             setHasFixedSize(true)
         }
 
+        binding.editTextSearch.setText("")
         binding.buttonSearch.setOnClickListener {
             search()
         }
@@ -49,6 +52,7 @@ class SearchFragment : Fragment() {
     }
 
     fun search() {
-        TODO("Implement Searching Engine")
+        vocabularyList = listManagement.searchResultList(binding.editTextSearch.text.toString())
+        binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 }

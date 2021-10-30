@@ -433,6 +433,37 @@ class VocabularyDB(context: Context) :
         return adjectiveList
     }
 
+    fun searchAdjectives(text: String): AdjectiveList {
+        val db = this.readableDatabase
+        val adjectiveList = AdjectiveList()
+/*
+        val cursor = db.rawQuery("SELECT * FROM " +
+                                VocabularyContract.AdjectivesEntry.TABLE_NAME + " WHERE " +
+                                VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE + " LIKE '%" + text + "%' OR " +
+                                VocabularyContract.AdjectivesEntry.COLUMN_MEANING + " LIKE '%" + text + "%'",
+                                null)
+
+ */
+        val cursor = db.rawQuery("SELECT * FROM " +
+                VocabularyContract.AdjectivesEntry.TABLE_NAME + " WHERE " +
+                VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE + " LIKE '%ver%' OR " +
+                VocabularyContract.AdjectivesEntry.COLUMN_MEANING + " LIKE '%ver%'",
+            null)
+
+        with(cursor) {
+            while (moveToNext()) {
+                val adjective = Adjective(
+                    getString(getColumnIndexOrThrow(VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.AdjectivesEntry.COLUMN_MEANING))
+                )
+                adjectiveList.add(adjective)
+            }
+            close()
+        }
+
+        return adjectiveList
+    }
+
     fun insertAdverb(adverb: Adverb) {
         val db = this.writableDatabase
 

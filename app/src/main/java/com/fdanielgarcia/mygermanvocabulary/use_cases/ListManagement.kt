@@ -89,4 +89,12 @@ class ListManagement(val activity: Activity) {
                       }
         return records != 0
     }
+
+    fun searchResultList(text: String): VocabularyList {
+        lateinit var vocabularyList: VocabularyList
+
+        vocabularyList = vocabularyDB.searchAdjectives(text)
+
+        return vocabularyList
+    }
 }
