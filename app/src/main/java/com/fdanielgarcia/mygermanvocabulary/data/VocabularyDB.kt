@@ -209,15 +209,8 @@ class VocabularyDB(context: Context) :
         }
 
         if (tableName != "") {
-            /*
-            val c = readableDatabase.rawQuery("SELECT COUNT(*) FROM $table_name", null)
-            if (c.moveToNext()) total = c.getInt(0)
-            c.close()
-            */
-
             val db = this.readableDatabase
             total = DatabaseUtils.queryNumEntries(db, tableName).toInt()
-            db.close()
         }
 
         return total
@@ -333,6 +326,7 @@ class VocabularyDB(context: Context) :
                 }
                 substantiveList.add(substantive)
             }
+            close()
         }
 
         return substantiveList
@@ -387,6 +381,7 @@ class VocabularyDB(context: Context) :
                 )
                 verbList.add(verb)
             }
+            close()
         }
 
         return verbList
@@ -432,6 +427,7 @@ class VocabularyDB(context: Context) :
                 )
                 adjectiveList.add(adjective)
             }
+            close()
         }
 
         return adjectiveList
@@ -477,6 +473,7 @@ class VocabularyDB(context: Context) :
                 )
                 adverbList.add(adverb)
             }
+            close()
         }
 
         return adverbList
@@ -522,6 +519,7 @@ class VocabularyDB(context: Context) :
                 )
                 conjunctionList.add(conjunction)
             }
+            close()
         }
 
         return conjunctionList
@@ -567,6 +565,7 @@ class VocabularyDB(context: Context) :
                 )
                 prepositionList.add(preposition)
             }
+            close()
         }
 
         return prepositionList
