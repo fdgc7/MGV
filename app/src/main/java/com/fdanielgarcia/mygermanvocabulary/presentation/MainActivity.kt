@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.fdanielgarcia.mygermanvocabulary.MGVApplication
 import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.databinding.ActivityMainBinding
 import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    //val vocabularyDB by lazy { (application as MGVApplication).vocabularyDB }
+    val vocabularyDB by lazy { (application as MGVApplication).vocabularyDB }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +62,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onDestroy() {
+        vocabularyDB.close()
+        super.onDestroy()
     }
 
     fun showFab() { binding.fab.visibility = View.VISIBLE }
