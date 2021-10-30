@@ -12,7 +12,7 @@ abstract class VocabularyList : Parcelable {
 
     abstract fun randomElement(): Vocabulary
 
-    fun allElements(): List<Vocabulary> {
+    private fun allElements(): List<Vocabulary> {
         return list
     }
 
