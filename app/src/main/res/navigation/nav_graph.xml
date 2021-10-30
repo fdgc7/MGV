@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/DefaultFragment">
+
+    <fragment
+        android:id="@+id/DefaultFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.DefaultFragment"
+        android:label="@string/default_fragment_label"
+        tools:layout="@layout/fragment_default">
+
+        <action
+            android:id="@+id/action_DefaultFragment_to_LoadFilesFragment"
+            app:destination="@id/LoadFilesFragment" />
+        <action
+            android:id="@+id/action_DefaultFragment_to_TestVocabularyFragment"
+            app:destination="@id/TestVocabularyFragment" />
+
+        <action
+            android:id="@+id/action_DefaultFragment_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/LoadFilesFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.LoadFilesFragment"
+        android:label="@string/load_files_fragment_label"
+        tools:layout="@layout/fragment_load_files">
+
+        <action
+            android:id="@+id/action_LoadFilesFragment_to_DefaultFragment"
+            app:destination="@id/DefaultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TestVocabularyFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.TestVocabularyFragment"
+        android:label="@string/test_vocabulary_fragment_label"
+        tools:layout="@layout/fragment_test_vocabulary">
+
+        <action
+            android:id="@+id/action_TestVocabularyFragment_to_ShowSubstantiveFragment"
+            app:destination="@id/ShowSubstantiveFragment" />
+        <action
+            android:id="@+id/action_TestVocabularyFragment_to_ShowVerbFragment"
+            app:destination="@id/ShowVerbFragment" />
+        <action
+            android:id="@+id/action_TestVocabularyFragment_to_ShowOtherFragment"
+            app:destination="@id/ShowOtherFragment" />
+        <action
+            android:id="@+id/action_TestVocabularyFragment_to_DefaultFragment"
+            app:destination="@id/DefaultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ShowSubstantiveFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.ShowSubstantiveFragment"
+        android:label="@string/show_substantive_fragment_label"
+        tools:layout="@layout/fragment_show_substantive">
+
+        <action
+            android:id="@+id/action_ShowSubstantiveFragment_to_TestVocabularyFragment"
+            app:destination="@id/TestVocabularyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ShowVerbFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.ShowVerbFragment"
+        android:label="@string/show_verb_fragment_label"
+        tools:layout="@layout/fragment_show_verb">
+
+        <action
+            android:id="@+id/action_ShowVerbFragment_to_TestVocabularyFragment"
+            app:destination="@id/TestVocabularyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ShowOtherFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.ShowOtherFragment"
+        android:label="{showOtherFragmentTitle}"
+        tools:layout="@layout/fragment_show_other">
+
+        <action
+            android:id="@+id/action_ShowOtherFragment_to_TestVocabularyFragment"
+            app:destination="@id/TestVocabularyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SearchFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.SearchFragment"
+        android:label="@string/search_fragment_label"
+        tools:layout="@layout/fragment_search">
+    </fragment>
+</navigation>
