@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/text_view_content_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:paddingStart="@dimen/text_margin"
-        android:paddingEnd="@dimen/text_margin"
         android:text="@string/verb_content_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,8 +21,6 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:justificationMode="none"
-        android:paddingStart="@dimen/text_margin"
-        android:paddingEnd="@dimen/text_margin"
         android:text="@string/verb_content_label"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
