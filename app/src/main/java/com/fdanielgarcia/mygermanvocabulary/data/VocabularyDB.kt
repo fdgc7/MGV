@@ -443,7 +443,7 @@ class VocabularyDB(context: Context) :
                                 VocabularyContract.AdjectivesEntry.COLUMN_MEANING + " LIKE '%" + text + "%'",
                                 null)
 
-        with(cursor) {
+        with(cursor) { //Todo: Remove upcases
             while (moveToNext()) {
                 val adjective = Adjective(
                     getString(getColumnIndexOrThrow(VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE)),

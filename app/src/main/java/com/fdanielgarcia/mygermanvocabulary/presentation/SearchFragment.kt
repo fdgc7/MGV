@@ -57,6 +57,9 @@ class SearchFragment : Fragment() {
     }
 
     fun search() {
+        //Todo: Check number of charaters
+        //Todo: Search with follow
+        //Todo: Remove upcases
         vocabularyList = listManagement.searchResultList(binding.editTextSearch.text.toString())
         Toast.makeText(
             activity,

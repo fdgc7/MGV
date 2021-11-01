@@ -79,6 +79,7 @@ class ShowSubstantiveFragment : Fragment() {
     }
 
     fun showNextName() {
+        //Todo: Remove plurals
         substantive = substantiveList.randomElement()
         binding.textViewName.setTextColor(getColor(requireContext(), R.color.unidentified))
         binding.textViewMeaning.setTextColor(getColor(requireContext(), R.color.unidentified))
