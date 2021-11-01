@@ -59,7 +59,7 @@ class SearchFragment : Fragment() {
         _binding = null
     }
 
-    fun search() {
+    private fun search() {
         val text = binding.editTextSearch.text.toString()
 
         if (text.length >= minCharacters) {

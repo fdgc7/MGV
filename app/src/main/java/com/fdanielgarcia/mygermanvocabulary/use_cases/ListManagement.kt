@@ -93,7 +93,10 @@ class ListManagement(val activity: Activity) {
     fun searchResultList(text: String): VocabularyList {
         lateinit var vocabularyList: VocabularyList
 
-        vocabularyList = vocabularyDB.searchAdjectives(text)
+        vocabularyList = vocabularyDB.searchSubstantives(Gender.MASCULINE,text)
+        vocabularyList.addAll(vocabularyDB.searchSubstantives(Gender.FEMININE,text))
+        vocabularyList.addAll(vocabularyDB.searchSubstantives(Gender.NEUTER,text))
+        vocabularyList.addAll(vocabularyDB.searchAdjectives(text))
 
         return vocabularyList
     }

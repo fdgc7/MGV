@@ -332,6 +332,79 @@ class VocabularyDB(context: Context) :
         return substantiveList
     }
 
+    fun searchSubstantives(gender: Gender, text: String): SubstantiveList {
+        val db = this.readableDatabase
+        val substantiveList = SubstantiveList()
+
+        when (gender) {
+            Gender.MASCULINE -> {
+                val cursor = db.rawQuery("SELECT * FROM " +
+                                        VocabularyContract.MasculineSubstantivesEntry.TABLE_NAME + " WHERE " +
+                                        "LOWER(" + VocabularyContract.MasculineSubstantivesEntry.COLUMN_NAME + ") " +
+                                        "LIKE LOWER('%" + text + "%') OR " +
+                                        "LOWER(" + VocabularyContract.MasculineSubstantivesEntry.COLUMN_MEANING + ") " +
+                                        "LIKE LOWER('%" + text + "%')",
+                             null)
+
+                with(cursor) {
+                    while (moveToNext()) {
+                        val substantive = Substantive(
+                            getString(getColumnIndexOrThrow(VocabularyContract.MasculineSubstantivesEntry.COLUMN_NAME)),
+                            gender,
+                            getString(getColumnIndexOrThrow(VocabularyContract.MasculineSubstantivesEntry.COLUMN_MEANING))
+                        )
+                        substantiveList.add(substantive)
+                    }
+                    close()
+                }
+            }
+            Gender.FEMININE -> {
+                val cursor = db.rawQuery("SELECT * FROM " +
+                        VocabularyContract.FeminineSubstantivesEntry.TABLE_NAME + " WHERE " +
+                        "LOWER(" + VocabularyContract.FeminineSubstantivesEntry.COLUMN_NAME + ") " +
+                        "LIKE LOWER('%" + text + "%') OR " +
+                        "LOWER(" + VocabularyContract.FeminineSubstantivesEntry.COLUMN_MEANING + ") " +
+                        "LIKE LOWER('%" + text + "%')",
+                    null)
+
+                with(cursor) {
+                    while (moveToNext()) {
+                        val substantive = Substantive(
+                            getString(getColumnIndexOrThrow(VocabularyContract.FeminineSubstantivesEntry.COLUMN_NAME)),
+                            gender,
+                            getString(getColumnIndexOrThrow(VocabularyContract.FeminineSubstantivesEntry.COLUMN_MEANING))
+                        )
+                        substantiveList.add(substantive)
+                    }
+                    close()
+                }
+            }
+            Gender.NEUTER -> {
+                val cursor = db.rawQuery("SELECT * FROM " +
+                        VocabularyContract.NeuterSubstantivesEntry.TABLE_NAME + " WHERE " +
+                        "LOWER(" + VocabularyContract.NeuterSubstantivesEntry.COLUMN_NAME + ") " +
+                        "LIKE LOWER('%" + text + "%') OR " +
+                        "LOWER(" + VocabularyContract.NeuterSubstantivesEntry.COLUMN_MEANING + ") " +
+                        "LIKE LOWER('%" + text + "%')",
+                    null)
+
+                with(cursor) {
+                    while (moveToNext()) {
+                        val substantive = Substantive(
+                            getString(getColumnIndexOrThrow(VocabularyContract.NeuterSubstantivesEntry.COLUMN_NAME)),
+                            gender,
+                            getString(getColumnIndexOrThrow(VocabularyContract.NeuterSubstantivesEntry.COLUMN_MEANING))
+                        )
+                        substantiveList.add(substantive)
+                    }
+                    close()
+                }
+            }
+        }
+
+        return substantiveList
+    }
+    
     fun insertVerb(verb: Verb) {
         val db = this.writableDatabase
 
