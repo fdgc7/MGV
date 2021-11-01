@@ -15,7 +15,7 @@ import com.fdanielgarcia.mygermanvocabulary.domain.Preposition
 
 class SearchResultAdapter(
     private val context: Context,
-    private val vocabularyList: VocabularyList
+    private var vocabularyList: VocabularyList
 ) : RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder>() {
 
     class SearchResultViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -25,7 +25,6 @@ class SearchResultAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.item_search_result, parent, false)
-
         return SearchResultViewHolder(adapterLayout)
     }
 
@@ -40,4 +39,9 @@ class SearchResultAdapter(
     }
 
     override fun getItemCount() = vocabularyList.size()
+
+    fun updateData(newVocabularyList: VocabularyList) {
+        vocabularyList = newVocabularyList
+        notifyDataSetChanged()
+    }
 }

@@ -5,17 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.data.VocabularyList
 import com.fdanielgarcia.mygermanvocabulary.databinding.FragmentSearchBinding
-import com.fdanielgarcia.mygermanvocabulary.domain.Vocabulary
 import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 
 class SearchFragment : Fragment() {
     val listManagement by lazy { ListManagement(activity as Activity) }
     private var vocabularyList = VocabularyList()
-    private lateinit var vocabulary: Vocabulary
+    private var searchResultAdapter: SearchResultAdapter? = null
     private var _binding: FragmentSearchBinding? = null
 
     // This property is only valid between onCreateView and
@@ -34,9 +36,12 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        searchResultAdapter = SearchResultAdapter(requireContext(), vocabularyList)
+
         binding.recyclerView.apply {
-            adapter = SearchResultAdapter(context, vocabularyList)
             setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = searchResultAdapter
         }
 
         binding.editTextSearch.setText("")
@@ -53,6 +58,11 @@ class SearchFragment : Fragment() {
 
     fun search() {
         vocabularyList = listManagement.searchResultList(binding.editTextSearch.text.toString())
-        binding.recyclerView.adapter?.notifyDataSetChanged()
+        Toast.makeText(
+            activity,
+            vocabularyList.size().toString() + " " + activity?.resources?.getString(R.string.found),
+            Toast.LENGTH_LONG
+        ).show()
+        searchResultAdapter?.updateData(vocabularyList)
     }
 }

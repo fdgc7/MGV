@@ -436,19 +436,12 @@ class VocabularyDB(context: Context) :
     fun searchAdjectives(text: String): AdjectiveList {
         val db = this.readableDatabase
         val adjectiveList = AdjectiveList()
-/*
+
         val cursor = db.rawQuery("SELECT * FROM " +
                                 VocabularyContract.AdjectivesEntry.TABLE_NAME + " WHERE " +
                                 VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE + " LIKE '%" + text + "%' OR " +
                                 VocabularyContract.AdjectivesEntry.COLUMN_MEANING + " LIKE '%" + text + "%'",
                                 null)
-
- */
-        val cursor = db.rawQuery("SELECT * FROM " +
-                VocabularyContract.AdjectivesEntry.TABLE_NAME + " WHERE " +
-                VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE + " LIKE '%ver%' OR " +
-                VocabularyContract.AdjectivesEntry.COLUMN_MEANING + " LIKE '%ver%'",
-            null)
 
         with(cursor) {
             while (moveToNext()) {
