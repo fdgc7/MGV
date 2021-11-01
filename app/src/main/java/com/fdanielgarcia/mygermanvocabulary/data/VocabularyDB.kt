@@ -439,11 +439,13 @@ class VocabularyDB(context: Context) :
 
         val cursor = db.rawQuery("SELECT * FROM " +
                                 VocabularyContract.AdjectivesEntry.TABLE_NAME + " WHERE " +
-                                VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE + " LIKE '%" + text + "%' OR " +
-                                VocabularyContract.AdjectivesEntry.COLUMN_MEANING + " LIKE '%" + text + "%'",
+                                "LOWER(" + VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE + ") " +
+                                "LIKE LOWER('%" + text + "%') OR " +
+                                "LOWER(" + VocabularyContract.AdjectivesEntry.COLUMN_MEANING + ") " +
+                                "LIKE LOWER('%" + text + "%')",
                                 null)
 
-        with(cursor) { //Todo: Remove upcases
+        with(cursor) {
             while (moveToNext()) {
                 val adjective = Adjective(
                     getString(getColumnIndexOrThrow(VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE)),
