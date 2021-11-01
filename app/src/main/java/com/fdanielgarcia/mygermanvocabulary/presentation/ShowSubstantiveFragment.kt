@@ -1,6 +1,7 @@
 package com.fdanielgarcia.mygermanvocabulary.presentation
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,11 @@ import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.data.SubstantiveList
 import com.fdanielgarcia.mygermanvocabulary.databinding.FragmentShowSubstantiveBinding
 import com.fdanielgarcia.mygermanvocabulary.domain.Substantive
+import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
+import com.fdanielgarcia.mygermanvocabulary.use_cases.VocabularyManagement
 
 class ShowSubstantiveFragment : Fragment() {
+    val vocabularyManagement by lazy { VocabularyManagement() }
     private lateinit var substantiveList: SubstantiveList
     private lateinit var substantive: Substantive
 
@@ -79,11 +83,10 @@ class ShowSubstantiveFragment : Fragment() {
     }
 
     fun showNextName() {
-        //Todo: Remove plurals
         substantive = substantiveList.randomElement()
         binding.textViewName.setTextColor(getColor(requireContext(), R.color.unidentified))
         binding.textViewMeaning.setTextColor(getColor(requireContext(), R.color.unidentified))
-        binding.textViewName.text = substantive.name
+        binding.textViewName.text = vocabularyManagement.removeSubstantivePlural(substantive.name)
         binding.textViewMeaning.text = ""
     }
 
