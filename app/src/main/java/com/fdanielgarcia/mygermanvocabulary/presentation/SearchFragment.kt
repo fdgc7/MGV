@@ -20,6 +20,7 @@ class SearchFragment : Fragment() {
     private var vocabularyList = VocabularyList()
     private var searchResultAdapter: SearchResultAdapter? = null
     private var _binding: FragmentSearchBinding? = null
+    private val minCharacters = 4
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -59,14 +60,17 @@ class SearchFragment : Fragment() {
     }
 
     fun search() {
-        //Todo: Check number of charaters
-        //Todo: Search with follow
-        vocabularyList = listManagement.searchResultList(binding.editTextSearch.text.toString())
-        Toast.makeText(
-            activity,
-            vocabularyList.size().toString() + " " + activity?.resources?.getString(R.string.found),
-            Toast.LENGTH_LONG
-        ).show()
-        searchResultAdapter?.updateData(vocabularyList)
+        val text = binding.editTextSearch.text.toString()
+
+        if (text.length >= minCharacters) {
+            vocabularyList = listManagement.searchResultList(text)
+            Toast.makeText(
+                activity,
+                vocabularyList.size()
+                    .toString() + " " + activity?.resources?.getString(R.string.found),
+                Toast.LENGTH_LONG
+            ).show()
+            searchResultAdapter?.updateData(vocabularyList)
+        }
     }
 }
