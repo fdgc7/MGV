@@ -89,7 +89,7 @@ class ShowVerbFragment : Fragment() {
     }
 
     fun showMeaning() {
-        binding.textViewPresent.text = verb.infinitive
+        binding.textViewInfinitive.text = verb.infinitive
         binding.textViewPresent.text = verb.present
         binding.textViewPast.text = verb.past
         binding.textViewPerfect.text = verb.perfect
