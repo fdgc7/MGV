@@ -11,8 +11,10 @@ import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.data.VerbList
 import com.fdanielgarcia.mygermanvocabulary.databinding.FragmentShowVerbBinding
 import com.fdanielgarcia.mygermanvocabulary.domain.Verb
+import com.fdanielgarcia.mygermanvocabulary.use_cases.VocabularyManagement
 
 class ShowVerbFragment : Fragment() {
+    val vocabularyManagement by lazy { VocabularyManagement() }
     private lateinit var verbList: VerbList
     private lateinit var verb: Verb
 
@@ -79,7 +81,7 @@ class ShowVerbFragment : Fragment() {
 
     fun showNextInfinitive() {
         verb = verbList.randomElement()
-        binding.textViewInfinitive.text = verb.infinitive
+        binding.textViewInfinitive.text = vocabularyManagement.removeVerbHint(verb.infinitive)
         binding.textViewPresent.text = ""
         binding.textViewPast.text = ""
         binding.textViewPerfect.text = ""
@@ -87,6 +89,7 @@ class ShowVerbFragment : Fragment() {
     }
 
     fun showMeaning() {
+        binding.textViewPresent.text = verb.infinitive
         binding.textViewPresent.text = verb.present
         binding.textViewPast.text = verb.past
         binding.textViewPerfect.text = verb.perfect

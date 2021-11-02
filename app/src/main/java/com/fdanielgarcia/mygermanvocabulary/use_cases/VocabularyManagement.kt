@@ -11,4 +11,13 @@ class VocabularyManagement (){
 
         return nameWithoutPlural
     }
+
+    fun removeVerbHint(infinitive: String): String {
+        val pattern1 = "-".toRegex()
+        val pattern2 = " \\(.*$".toRegex()
+        var infinitiveWithoutHint = pattern1.replace(infinitive,"")
+        infinitiveWithoutHint = pattern2.replace(infinitiveWithoutHint,"")
+
+        return infinitiveWithoutHint
+    }
 }
