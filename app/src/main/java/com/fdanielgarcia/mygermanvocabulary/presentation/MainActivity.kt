@@ -17,6 +17,7 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 class MainActivity : AppCompatActivity() {
     // Todo: Language preferences
+    // Todo: Show German Pronouns Declined with Reflexives.png
     val listManagement by lazy { ListManagement(this) }
 
     private lateinit var appBarConfiguration: AppBarConfiguration

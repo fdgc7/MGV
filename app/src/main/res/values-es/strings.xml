@@ -17,6 +17,7 @@
     <string name="file_not_loaded">Fichero No Cargado</string>
     <string name="test_vocabulary">Preguntar Vocabulario</string>
     <string name="records_loaded">Registros Cargados</string>
+    <string name="incorrect_file_format">Formato de Fichero Incorrecto</string>
     <string name="existing_records">Registros Existentes</string>
     <string name="show">Mostrar</string>
     <string name="next">Siguiente</string>

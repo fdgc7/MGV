@@ -132,13 +132,21 @@ class LoadFilesFragment : Fragment() {
 
     private fun manageResult(result: ActivityResult, fileType: String) {
         if (result.resultCode == Activity.RESULT_OK) {
-            Toast.makeText(
-                activity,
-                fileManagement.loadCSV(fileType, result.data?.data!!)
-                    .toString() + " " +
-                        activity?.resources?.getString(R.string.records_loaded),
-                Toast.LENGTH_LONG
-            ).show()
+            val numRecords = fileManagement.loadCSV(fileType, result.data?.data!!)
+
+            if (numRecords >= 0) {
+                Toast.makeText(
+                    activity,
+                    numRecords.toString() + " " + activity?.resources?.getString(R.string.records_loaded),
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    activity,
+                    activity?.resources?.getString(R.string.incorrect_file_format),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         } else {
             Toast.makeText(
                 activity,

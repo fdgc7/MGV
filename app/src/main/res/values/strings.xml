@@ -17,6 +17,7 @@
     <string name="file_not_loaded">File Not Loaded</string>
     <string name="test_vocabulary">Test Vocabulary</string>
     <string name="records_loaded">Records Loaded</string>
+    <string name="incorrect_file_format">Incorrect File Format</string>
     <string name="existing_records">Existing Records</string>
     <string name="show">Show</string>
     <string name="next">Next</string>
