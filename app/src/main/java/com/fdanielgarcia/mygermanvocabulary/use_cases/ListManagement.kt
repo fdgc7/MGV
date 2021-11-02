@@ -96,7 +96,11 @@ class ListManagement(val activity: Activity) {
         vocabularyList = vocabularyDB.searchSubstantives(Gender.MASCULINE,text)
         vocabularyList.addAll(vocabularyDB.searchSubstantives(Gender.FEMININE,text))
         vocabularyList.addAll(vocabularyDB.searchSubstantives(Gender.NEUTER,text))
+        vocabularyList.addAll(vocabularyDB.searchVerbs(text))
         vocabularyList.addAll(vocabularyDB.searchAdjectives(text))
+        vocabularyList.addAll(vocabularyDB.searchAdverbs(text))
+        vocabularyList.addAll(vocabularyDB.searchConjunction(text))
+        vocabularyList.addAll(vocabularyDB.searchPreposition(text))
 
         return vocabularyList
     }

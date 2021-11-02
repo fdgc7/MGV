@@ -16,6 +16,7 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 
 class SearchFragment : Fragment() {
+    // Todo: minCharacters from preferences
     val listManagement by lazy { ListManagement(activity as Activity) }
     private var vocabularyList = VocabularyList()
     private var searchResultAdapter: SearchResultAdapter? = null

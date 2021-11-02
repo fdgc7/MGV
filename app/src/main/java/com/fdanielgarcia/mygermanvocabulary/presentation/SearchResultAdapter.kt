@@ -9,8 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.data.VocabularyList
-import com.fdanielgarcia.mygermanvocabulary.domain.Adjective
-import com.fdanielgarcia.mygermanvocabulary.domain.Substantive
+import com.fdanielgarcia.mygermanvocabulary.domain.*
 
 class SearchResultAdapter(
     private val context: Context,
@@ -41,13 +40,71 @@ class SearchResultAdapter(
                     )
                 )
                 holder.textViewContent.text =
-                    vocabulary.gender.article + " " + vocabulary.name + " / " + vocabulary.meaning
+                    vocabulary.gender.article + " " + vocabulary.name + " | " + vocabulary.meaning
+            }
+            vocabulary is Verb -> {
+                holder.textViewContentLabel.text =
+                    context.resources.getString(R.string.verb_content_label)
+                holder.textViewContent.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.unidentified
+                    )
+                )
+                holder.textViewContent.text =
+                    vocabulary.infinitive + " | " +
+                    vocabulary.present + " | " +
+                    vocabulary.past + " | " +
+                    vocabulary.perfect + " | " +
+                    vocabulary.meaning
             }
             vocabulary is Adjective -> {
                 holder.textViewContentLabel.text =
                     context.resources.getString(R.string.adjective_content_label)
+                holder.textViewContent.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.unidentified
+                    )
+                )
                 holder.textViewContent.text =
-                    vocabulary.adjective + " / " + vocabulary.meaning
+                    vocabulary.adjective + " | " + vocabulary.meaning
+            }
+            vocabulary is Adverb -> {
+                holder.textViewContentLabel.text =
+                    context.resources.getString(R.string.adverb_content_label)
+                holder.textViewContent.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.unidentified
+                    )
+                )
+                holder.textViewContent.text =
+                    vocabulary.adverb + " | " + vocabulary.meaning
+            }
+            vocabulary is Conjunction -> {
+                holder.textViewContentLabel.text =
+                    context.resources.getString(R.string.conjunction_content_label)
+                holder.textViewContent.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.unidentified
+                    )
+                )
+                holder.textViewContent.text =
+                    vocabulary.conjunction + " | " + vocabulary.meaning
+            }
+            vocabulary is Preposition -> {
+                holder.textViewContentLabel.text =
+                    context.resources.getString(R.string.preposition_content_label)
+                holder.textViewContent.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.unidentified
+                    )
+                )
+                holder.textViewContent.text =
+                    vocabulary.preposition + " | " + vocabulary.meaning
             }
         }
     }

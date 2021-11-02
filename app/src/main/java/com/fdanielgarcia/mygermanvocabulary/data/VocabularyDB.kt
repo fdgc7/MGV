@@ -460,6 +460,41 @@ class VocabularyDB(context: Context) :
         return verbList
     }
 
+    fun searchVerbs(text: String): VerbList {
+        val db = this.readableDatabase
+        val verbList = VerbList()
+
+        val cursor = db.rawQuery("SELECT * FROM " +
+                VocabularyContract.VerbsEntry.TABLE_NAME + " WHERE " +
+                "LOWER(" + VocabularyContract.VerbsEntry.COLUMN_INFINITIVE + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.VerbsEntry.COLUMN_PRESENT + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.VerbsEntry.COLUMN_PAST + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.VerbsEntry.COLUMN_PERFECT + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.VerbsEntry.COLUMN_MEANING + ") " +
+                "LIKE LOWER('%" + text + "%')",
+            null)
+
+        with(cursor) {
+            while (moveToNext()) {
+                val verb = Verb(
+                    getString(getColumnIndexOrThrow(VocabularyContract.VerbsEntry.COLUMN_INFINITIVE)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.VerbsEntry.COLUMN_PRESENT)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.VerbsEntry.COLUMN_PAST)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.VerbsEntry.COLUMN_PERFECT)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.VerbsEntry.COLUMN_MEANING))
+                )
+                verbList.add(verb)
+            }
+            close()
+        }
+
+        return verbList
+    }
+    
     fun insertAdjective(adjective: Adjective) {
         val db = this.writableDatabase
 
@@ -578,6 +613,32 @@ class VocabularyDB(context: Context) :
         return adverbList
     }
 
+    fun searchAdverbs(text: String): AdverbList {
+        val db = this.readableDatabase
+        val adverbList = AdverbList()
+
+        val cursor = db.rawQuery("SELECT * FROM " +
+                VocabularyContract.AdverbsEntry.TABLE_NAME + " WHERE " +
+                "LOWER(" + VocabularyContract.AdverbsEntry.COLUMN_ADVERB + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.AdverbsEntry.COLUMN_MEANING + ") " +
+                "LIKE LOWER('%" + text + "%')",
+            null)
+
+        with(cursor) {
+            while (moveToNext()) {
+                val adverb = Adverb(
+                    getString(getColumnIndexOrThrow(VocabularyContract.AdverbsEntry.COLUMN_ADVERB)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.AdverbsEntry.COLUMN_MEANING))
+                )
+                adverbList.add(adverb)
+            }
+            close()
+        }
+
+        return adverbList
+    }
+
     fun insertConjunction(conjunction: Conjunction) {
         val db = this.writableDatabase
 
@@ -624,6 +685,32 @@ class VocabularyDB(context: Context) :
         return conjunctionList
     }
 
+    fun searchConjunction(text: String): ConjunctionList {
+        val db = this.readableDatabase
+        val conjunctionList = ConjunctionList()
+
+        val cursor = db.rawQuery("SELECT * FROM " +
+                VocabularyContract.ConjunctionsEntry.TABLE_NAME + " WHERE " +
+                "LOWER(" + VocabularyContract.ConjunctionsEntry.COLUMN_CONJUNCTION + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.ConjunctionsEntry.COLUMN_MEANING + ") " +
+                "LIKE LOWER('%" + text + "%')",
+            null)
+
+        with(cursor) {
+            while (moveToNext()) {
+                val conjunction = Conjunction(
+                    getString(getColumnIndexOrThrow(VocabularyContract.ConjunctionsEntry.COLUMN_CONJUNCTION)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.ConjunctionsEntry.COLUMN_MEANING))
+                )
+                conjunctionList.add(conjunction)
+            }
+            close()
+        }
+
+        return conjunctionList
+    }
+    
     fun insertPreposition(preposition: Preposition) {
         val db = this.writableDatabase
 
@@ -668,5 +755,31 @@ class VocabularyDB(context: Context) :
         }
 
         return prepositionList
+    }
+
+    fun searchPreposition(text: String): PrepositionList {
+        val db = this.readableDatabase
+        val PrepositionList = PrepositionList()
+
+        val cursor = db.rawQuery("SELECT * FROM " +
+                VocabularyContract.PrepositionsEntry.TABLE_NAME + " WHERE " +
+                "LOWER(" + VocabularyContract.PrepositionsEntry.COLUMN_PREPOSITION + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.PrepositionsEntry.COLUMN_MEANING + ") " +
+                "LIKE LOWER('%" + text + "%')",
+            null)
+
+        with(cursor) {
+            while (moveToNext()) {
+                val Preposition = Preposition(
+                    getString(getColumnIndexOrThrow(VocabularyContract.PrepositionsEntry.COLUMN_PREPOSITION)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.PrepositionsEntry.COLUMN_MEANING))
+                )
+                PrepositionList.add(Preposition)
+            }
+            close()
+        }
+
+        return PrepositionList
     }
 }
