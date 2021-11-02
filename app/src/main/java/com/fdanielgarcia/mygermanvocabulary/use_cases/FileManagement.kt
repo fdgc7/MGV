@@ -69,9 +69,9 @@ class FileManagement(val activity: Activity) {
                 for (csvRecord in csvParser) {
                     val verb = Verb(
                         csvRecord.get("Infinitiv"),
-                        csvRecord.get("Präsens (er/sie/es)"), //Todo: Remove (es/sie/es)
-                        csvRecord.get("Präteritum (er/sie/es)"), //Todo: Remove (es/sie/es)
-                        csvRecord.get("Perfekt (er/sie/es)"), //Todo: Remove (es/sie/es)
+                        csvRecord.get("Präsens"),
+                        csvRecord.get("Präteritum"),
+                        csvRecord.get("Perfekt"),
                         csvRecord.get("Bedeutung")
                     )
                     vocabularyDB.insertVerb(verb)
