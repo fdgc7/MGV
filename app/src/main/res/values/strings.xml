@@ -46,10 +46,12 @@
     <string name="show_preposition_fragment_label">Prepositions Test</string>
     <string name="show_other_fragment_label">Other Test</string>
     <string name="search_fragment_label">Search</string>
+    <string name="show_german_pronouns_activity_label">German Pronouns</string>
     <string name="substantive_content_label">Substantive | Meaning</string>
     <string name="verb_content_label">Infinitive | Present | Past | Perfect | Meaning</string>
     <string name="adjective_content_label">Adjective | Meaning</string>
     <string name="adverb_content_label">Adverb | Meaning</string>
     <string name="conjunction_content_label">Conjunction | Meaning</string>
     <string name="preposition_content_label">Preposition | Meaning</string>
+    <string name="german_pronouns">German Pronouns</string>
 </resources>

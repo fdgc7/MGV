@@ -46,10 +46,12 @@
     <string name="show_preposition_fragment_label">Preguntar Preposiciones</string>
     <string name="show_other_fragment_label">Other Otros</string>
     <string name="search_fragment_label">Buscar</string>
+    <string name="show_german_pronouns_activity_label">Pronombres en Alemán</string>
     <string name="substantive_content_label">Sustantivo | Significado</string>
     <string name="verb_content_label">Infinitivo | Presente | Pasado | Perfecto | Significado</string>
     <string name="adjective_content_label">Adjetivo | Significado</string>
     <string name="adverb_content_label">Adverbio | Significado</string>
     <string name="conjunction_content_label">Conjunción | Significado</string>
     <string name="preposition_content_label">Preposición | Significado</string>
+    <string name="german_pronouns">Pronombres en Alemán</string>
 </resources>

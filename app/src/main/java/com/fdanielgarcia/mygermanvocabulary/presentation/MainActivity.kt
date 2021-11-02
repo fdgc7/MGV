@@ -1,5 +1,6 @@
 package com.fdanielgarcia.mygermanvocabulary.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -17,7 +18,6 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 class MainActivity : AppCompatActivity() {
     // Todo: Language preferences
-    // Todo: Show German Pronouns Declined with Reflexives.png
     val listManagement by lazy { ListManagement(this) }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -55,6 +55,11 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+            R.id.action_german_pronouns -> {
+                val i = Intent(this, ShowGermanPronounsActivity::class.java)
+                startActivity(i)
+                true
+            }
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }

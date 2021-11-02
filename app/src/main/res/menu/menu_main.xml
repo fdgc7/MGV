@@ -3,8 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.fdanielgarcia.mygermanvocabulary.presentation.MainActivity">
     <item
+        android:id="@+id/action_german_pronouns"
+        android:title="@string/german_pronouns"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:orderInCategory="50"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom" />
 </menu>
