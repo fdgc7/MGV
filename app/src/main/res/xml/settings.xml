@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="list_preference_language"
+        android:title="@string/settings_language"
+        android:entries="@array/languages"
+        android:entryValues="@array/locales"
+        android:defaultValue=""/>
+    <EditTextPreference
+        android:key="edit_text_preference_searching_min_chars"
+        android:title="@string/setting_searching_min_chars"
+        android:inputType="number"
+        android:defaultValue="4"/>
+</PreferenceScreen>

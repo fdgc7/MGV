@@ -34,6 +34,7 @@ class FileManagement(val activity: Activity) {
 
         vocabularyDB.emptyTable(fileType)
 
+        //Todo: Configure headers
         try {
             when (fileType) {
                 "MasculineSubstantives" -> {

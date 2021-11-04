@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">My German Vocabulary</string>
-    <string name="action_settings">Preferencias</string>
     <string name="load_files">Cargar Ficheros</string>
     <string name="back">Atrás</string>
     <string name="stored">Almacenado</string>
@@ -48,12 +47,20 @@
     <string name="search_fragment_label">Buscar</string>
     <string name="show_german_pronouns_activity_label">Pronombres en Alemán</string>
     <string name="show_german_prepositions_activity_label">Preposiciones en Alemán</string>
+    <string name="settings_fragment_label">Configuración</string>
     <string name="substantive_content_label">Sustantivo | Significado</string>
     <string name="verb_content_label">Infinitivo | Presente | Pasado | Perfecto | Significado</string>
     <string name="adjective_content_label">Adjetivo | Significado</string>
     <string name="adverb_content_label">Adverbio | Significado</string>
     <string name="conjunction_content_label">Conjunción | Significado</string>
     <string name="preposition_content_label">Preposición | Significado</string>
-    <string name="german_pronouns">Pronombres en Alemán</string>
-    <string name="german_prepositions">Preposiciones en Alemán</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="action_german_pronouns">Pronombres en Alemán</string>
+    <string name="action_german_prepositions">Preposiciones en Alemán</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_system">Sistema</string>
+    <string name="settings_language_german">Alemán</string>
+    <string name="settings_language_english">Inglés</string>
+    <string name="settings_language_spanish">Español</string>
+    <string name="setting_searching_min_chars">Número Mínimo de Caracteres en Búsquedas</string>
 </resources>

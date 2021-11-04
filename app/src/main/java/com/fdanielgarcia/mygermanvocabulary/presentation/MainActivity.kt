@@ -66,7 +66,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(i)
                 true
             }
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_DefaultFragment_to_SettingsFragment)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -82,6 +85,11 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    fun showFab() { binding.fab.visibility = View.VISIBLE }
-    fun hideFab() { binding.fab.visibility = View.INVISIBLE }
+    fun showFab() {
+        binding.fab.visibility = View.VISIBLE
+    }
+
+    fun hideFab() {
+        binding.fab.visibility = View.INVISIBLE
+    }
 }

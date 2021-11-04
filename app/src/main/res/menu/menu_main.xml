@@ -4,20 +4,20 @@
     tools:context="com.fdanielgarcia.mygermanvocabulary.presentation.MainActivity">
     <item
         android:id="@+id/action_german_pronouns"
-        android:title="@string/german_pronouns"
+        android:title="@string/action_german_pronouns"
         android:icon="@android:drawable/ic_menu_gallery"
         android:orderInCategory="50"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_german_prepositions"
-        android:title="@string/german_prepositions"
+        android:title="@string/action_german_prepositions"
         android:icon="@android:drawable/ic_menu_gallery"
         android:orderInCategory="70"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@drawable/ic_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
 </menu>

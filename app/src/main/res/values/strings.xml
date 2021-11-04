@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">My German Vocabulary</string>
-    <string name="action_settings">Settings</string>
     <string name="load_files">Load Files</string>
     <string name="back">Back</string>
     <string name="stored">Stored</string>
@@ -48,12 +47,20 @@
     <string name="search_fragment_label">Search</string>
     <string name="show_german_pronouns_activity_label">German Pronouns</string>
     <string name="show_german_prepositions_activity_label">German Prepositions</string>
+    <string name="settings_fragment_label">Settings</string>
     <string name="substantive_content_label">Substantive | Meaning</string>
     <string name="verb_content_label">Infinitive | Present | Past | Perfect | Meaning</string>
     <string name="adjective_content_label">Adjective | Meaning</string>
     <string name="adverb_content_label">Adverb | Meaning</string>
     <string name="conjunction_content_label">Conjunction | Meaning</string>
     <string name="preposition_content_label">Preposition | Meaning</string>
-    <string name="german_pronouns">German Pronouns</string>
-    <string name="german_prepositions">German Prepositions</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_german_pronouns">German Pronouns</string>
+    <string name="action_german_prepositions">German Prepositions</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_language_german">German</string>
+    <string name="settings_language_english">English</string>
+    <string name="settings_language_spanish">Spanish</string>
+    <string name="setting_searching_min_chars">Mininum Number of Characters in Searching</string>
 </resources>

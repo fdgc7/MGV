@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_fdgc_german_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyGermanVocabulary">
+        android:theme="@style/Theme.MyGermanVocabulary"
+        android:configChanges="locale">
         <activity
             android:name="com.fdanielgarcia.mygermanvocabulary.presentation.MainActivity"
             android:exported="true"

@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/chart_background"
-        android:contentDescription="@string/german_pronouns"
+        android:contentDescription="@string/action_german_pronouns"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/german_pronouns" />

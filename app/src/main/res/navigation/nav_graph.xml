@@ -21,6 +21,10 @@
         <action
             android:id="@+id/action_DefaultFragment_to_SearchFragment"
             app:destination="@id/SearchFragment" />
+
+        <action
+            android:id="@+id/action_DefaultFragment_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
@@ -43,12 +47,15 @@
         <action
             android:id="@+id/action_TestVocabularyFragment_to_ShowSubstantiveFragment"
             app:destination="@id/ShowSubstantiveFragment" />
+
         <action
             android:id="@+id/action_TestVocabularyFragment_to_ShowVerbFragment"
             app:destination="@id/ShowVerbFragment" />
+
         <action
             android:id="@+id/action_TestVocabularyFragment_to_ShowOtherFragment"
             app:destination="@id/ShowOtherFragment" />
+
         <action
             android:id="@+id/action_TestVocabularyFragment_to_DefaultFragment"
             app:destination="@id/DefaultFragment" />
@@ -92,5 +99,11 @@
         android:name="com.fdanielgarcia.mygermanvocabulary.presentation.SearchFragment"
         android:label="@string/search_fragment_label"
         tools:layout="@layout/fragment_search">
+    </fragment>
+
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.fdanielgarcia.mygermanvocabulary.presentation.SettingsFragment"
+        android:label="@string/settings_fragment_label">
     </fragment>
 </navigation>
