@@ -18,6 +18,7 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 class MainActivity : AppCompatActivity() {
     // Todo: Language preferences
+
     val listManagement by lazy { ListManagement(this) }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -57,6 +58,11 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_german_pronouns -> {
                 val i = Intent(this, ShowGermanPronounsActivity::class.java)
+                startActivity(i)
+                true
+            }
+            R.id.action_german_prepositions -> {
+                val i = Intent(this, ShowGermanPrepositionsActivity::class.java)
                 startActivity(i)
                 true
             }

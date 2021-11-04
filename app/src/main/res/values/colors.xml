@@ -14,4 +14,5 @@
     <color name="das">#0099CC</color>
     <color name="no_art">#000000</color>
     <color name="unidentified">#2E2E2E</color>
+    <color name="chart_background">#FFFFFF</color>
 </resources>
