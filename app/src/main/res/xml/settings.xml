@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
         android:key="list_preference_language"
         android:title="@string/settings_language"
+        android:icon="@android:drawable/ic_menu_mapmode"
         android:entries="@array/languages"
-        android:entryValues="@array/locales"
-        android:defaultValue=""/>
+        android:entryValues="@array/languages"
+        android:defaultValue="@string/settings_language_system"
+        app:allowDividerBelow="true"
+        app:useSimpleSummaryProvider="true" />
     <EditTextPreference
         android:key="edit_text_preference_searching_min_chars"
         android:title="@string/setting_searching_min_chars"
+        android:icon="@android:drawable/ic_menu_search"
         android:inputType="number"
-        android:defaultValue="4"/>
+        android:defaultValue="4"
+        android:selectAllOnFocus="true"
+        app:allowDividerAbove="true"
+        app:allowDividerBelow="true"
+        app:useSimpleSummaryProvider="true" />
 </PreferenceScreen>

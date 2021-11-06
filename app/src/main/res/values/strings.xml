@@ -63,4 +63,5 @@
     <string name="settings_language_english">English</string>
     <string name="settings_language_spanish">Spanish</string>
     <string name="setting_searching_min_chars">Mininum Number of Characters in Searching</string>
+    <string name="incorrect_value">Incorrect Value</string>
 </resources>
