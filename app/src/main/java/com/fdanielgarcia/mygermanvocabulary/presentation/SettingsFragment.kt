@@ -1,11 +1,16 @@
 package com.fdanielgarcia.mygermanvocabulary.presentation
 
+import android.app.Activity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.preference.*
 import com.fdanielgarcia.mygermanvocabulary.R
+import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
+import com.fdanielgarcia.mygermanvocabulary.use_cases.SystemManagement
 
 class SettingsFragment : PreferenceFragmentCompat() {
+    val systemManagement by lazy { SystemManagement(activity as Activity) }
+
     companion object {
         const val INF_NUM_CHAR_LIMIT = 0
         const val SUP_NUM_CHAR_LIMIT = 10
@@ -14,10 +19,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.settings, rootKey)
 
+        val language = findPreference<ListPreference>("preference_language")
         val searchingMinChars =
-            findPreference<EditTextPreference>("edit_text_preference_searching_min_chars")
+            findPreference<EditTextPreference>("preference_searching_min_chars")
 
-        searchingMinChars?.setOnPreferenceChangeListener { preference, newValue ->
+        language?.setOnPreferenceChangeListener { _, newValue ->
+            systemManagement.changeAppLanguage(newValue as String)
+            true
+        }
+
+        searchingMinChars?.setOnPreferenceChangeListener { _, newValue ->
             var value = -1
             try {
                 value = Integer.parseInt(newValue as String)

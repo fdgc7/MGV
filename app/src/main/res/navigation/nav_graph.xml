@@ -23,7 +23,7 @@
             app:destination="@id/SearchFragment" />
 
         <action
-            android:id="@+id/action_DefaultFragment_to_SettingsFragment"
+            android:id="@+id/action_All_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
     </fragment>
 
@@ -36,6 +36,10 @@
         <action
             android:id="@+id/action_LoadFilesFragment_to_DefaultFragment"
             app:destination="@id/DefaultFragment" />
+
+        <action
+            android:id="@+id/action_All_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
@@ -59,6 +63,10 @@
         <action
             android:id="@+id/action_TestVocabularyFragment_to_DefaultFragment"
             app:destination="@id/DefaultFragment" />
+
+        <action
+            android:id="@+id/action_All_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
@@ -70,6 +78,10 @@
         <action
             android:id="@+id/action_ShowSubstantiveFragment_to_TestVocabularyFragment"
             app:destination="@id/TestVocabularyFragment" />
+
+        <action
+            android:id="@+id/action_All_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
@@ -81,6 +93,10 @@
         <action
             android:id="@+id/action_ShowVerbFragment_to_TestVocabularyFragment"
             app:destination="@id/TestVocabularyFragment" />
+
+        <action
+            android:id="@+id/action_All_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
@@ -92,6 +108,10 @@
         <action
             android:id="@+id/action_ShowOtherFragment_to_TestVocabularyFragment"
             app:destination="@id/TestVocabularyFragment" />
+
+        <action
+            android:id="@+id/action_All_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
@@ -99,11 +119,19 @@
         android:name="com.fdanielgarcia.mygermanvocabulary.presentation.SearchFragment"
         android:label="@string/search_fragment_label"
         tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/action_All_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/SettingsFragment"
         android:name="com.fdanielgarcia.mygermanvocabulary.presentation.SettingsFragment"
         android:label="@string/settings_fragment_label">
+
+        <action
+            android:id="@+id/action_All_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
 </navigation>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fdanielgarcia.mygermanvocabulary.R
@@ -16,12 +17,11 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 
 class SearchFragment : Fragment() {
-    // Todo: minCharacters from preferences
     val listManagement by lazy { ListManagement(activity as Activity) }
     private var vocabularyList = VocabularyList()
     private var searchResultAdapter: SearchResultAdapter? = null
     private var _binding: FragmentSearchBinding? = null
-    private val minCharacters = 4
+    private var minCharacters = 4
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -62,6 +62,13 @@ class SearchFragment : Fragment() {
 
     private fun search() {
         val text = binding.editTextSearch.text.toString()
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+        minCharacters = Integer.parseInt(
+            sharedPref.getString(
+                "preference_searching_min_chars",
+                minCharacters.toString()
+            )!!
+        )
 
         if (text.length >= minCharacters) {
             vocabularyList = listManagement.searchResultList(text)

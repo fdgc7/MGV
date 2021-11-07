@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_settings -> {
-                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_DefaultFragment_to_SettingsFragment)
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_All_to_SettingsFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)
