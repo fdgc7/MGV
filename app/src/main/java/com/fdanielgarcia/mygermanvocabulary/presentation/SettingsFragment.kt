@@ -3,13 +3,15 @@ package com.fdanielgarcia.mygermanvocabulary.presentation
 import android.app.Activity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.recreate
 import androidx.preference.*
+import com.fdanielgarcia.mygermanvocabulary.MGVApplication
 import com.fdanielgarcia.mygermanvocabulary.R
-import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
-import com.fdanielgarcia.mygermanvocabulary.use_cases.SystemManagement
+import com.fdanielgarcia.mygermanvocabulary.use_cases.LocaleManagement
+import com.fdanielgarcia.mygermanvocabulary.use_cases.PreferredLocale
 
 class SettingsFragment : PreferenceFragmentCompat() {
-    val systemManagement by lazy { SystemManagement(activity as Activity) }
+    val preferredLocale : PreferredLocale by lazy { (activity?.application as MGVApplication).preferredLocale }
 
     companion object {
         const val INF_NUM_CHAR_LIMIT = 0
@@ -24,7 +26,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
             findPreference<EditTextPreference>("preference_searching_min_chars")
 
         language?.setOnPreferenceChangeListener { _, newValue ->
-            systemManagement.changeAppLanguage(newValue as String)
+            preferredLocale.setPreferredLocale(newValue as String)
+            LocaleManagement.applyLocalizedContext(requireContext(), newValue as String)
+            recreate(activity as Activity)
             true
         }
 

@@ -58,10 +58,10 @@
     <string name="action_german_pronouns">German Pronouns</string>
     <string name="action_german_prepositions">German Prepositions</string>
     <string name="settings_language">Language</string>
-    <string name="settings_language_system">System</string>
+    <string name="settings_language_system">Phone´s language</string>
     <string name="settings_language_german">German</string>
     <string name="settings_language_english">English</string>
     <string name="settings_language_spanish">Spanish</string>
-    <string name="setting_searching_min_chars">Mininum Number of Characters in Searching</string>
+    <string name="setting_searching_min_chars">Minimum Number of Characters in Searching</string>
     <string name="incorrect_value">Incorrect Value</string>
 </resources>

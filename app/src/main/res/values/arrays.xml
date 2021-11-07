@@ -7,7 +7,7 @@
         <item>@string/settings_language_spanish</item>
     </string-array>
     <string-array name="locales">
-        <item>""</item>
+        <item>"sys"</item>
         <item>"de"</item>
         <item>"en"</item>
         <item>"es"</item>

@@ -16,9 +16,7 @@ import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.databinding.ActivityMainBinding
 import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
-class MainActivity : AppCompatActivity() {
-    // Todo: Language preferences
-
+class MainActivity : BaseActivity() {
     val listManagement by lazy { ListManagement(this) }
 
     private lateinit var appBarConfiguration: AppBarConfiguration

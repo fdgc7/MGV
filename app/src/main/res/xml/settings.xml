@@ -6,8 +6,8 @@
         android:title="@string/settings_language"
         android:icon="@android:drawable/ic_menu_mapmode"
         android:entries="@array/languages"
-        android:entryValues="@array/languages"
-        android:defaultValue="@string/settings_language_system"
+        android:entryValues="@array/locales"
+        android:defaultValue="sys"
         app:allowDividerBelow="true"
         app:useSimpleSummaryProvider="true" />
     <EditTextPreference

@@ -20,8 +20,8 @@
     <string name="existing_records">Registros Existentes</string>
     <string name="show">Mostrar</string>
     <string name="next">Siguiente</string>
-    <string name="quit">Buscar</string>
-    <string name="search">Search</string>
+    <string name="quit">Parar</string>
+    <string name="search">Buscar</string>
     <string name="found">Encontrados</string>
     <string name="substantive">Sustantivo</string>
     <string name="infinitive">Infinitivo</string>
@@ -54,11 +54,11 @@
     <string name="adverb_content_label">Adverbio | Significado</string>
     <string name="conjunction_content_label">Conjunción | Significado</string>
     <string name="preposition_content_label">Preposición | Significado</string>
-    <string name="action_settings">Preferencias</string>
+    <string name="action_settings">Configuración</string>
     <string name="action_german_pronouns">Pronombres en Alemán</string>
     <string name="action_german_prepositions">Preposiciones en Alemán</string>
     <string name="settings_language">Idioma</string>
-    <string name="settings_language_system">Sistema</string>
+    <string name="settings_language_system">Idioma del teléfono</string>
     <string name="settings_language_german">Alemán</string>
     <string name="settings_language_english">Inglés</string>
     <string name="settings_language_spanish">Español</string>

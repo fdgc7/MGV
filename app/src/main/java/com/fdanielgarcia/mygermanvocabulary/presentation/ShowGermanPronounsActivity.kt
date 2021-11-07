@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.fdanielgarcia.mygermanvocabulary.databinding.ActivityShowGermanPronounsBinding
 
-class ShowGermanPronounsActivity : AppCompatActivity() {
+class ShowGermanPronounsActivity : BaseActivity() {
     private lateinit var binding: ActivityShowGermanPronounsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
