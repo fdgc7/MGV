@@ -10,8 +10,8 @@ android {
         applicationId "com.fdanielgarcia.mygermanvocabulary"
         minSdk 28
         targetSdk 30
-        versionCode 16
-        versionName "2.4.1"
+        versionCode 17
+        versionName "2.5.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
