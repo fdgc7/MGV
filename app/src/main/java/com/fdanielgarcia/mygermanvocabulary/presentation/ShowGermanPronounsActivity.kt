@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.fdanielgarcia.mygermanvocabulary.databinding.ActivityShowGermanPronounsBinding
 
 class ShowGermanPronounsActivity : BaseActivity() {
+    // Todo: Check pronoun chart background
     private lateinit var binding: ActivityShowGermanPronounsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

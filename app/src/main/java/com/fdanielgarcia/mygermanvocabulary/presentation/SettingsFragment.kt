@@ -11,6 +11,7 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.LocaleManagement
 import com.fdanielgarcia.mygermanvocabulary.use_cases.PreferredLocale
 
 class SettingsFragment : PreferenceFragmentCompat() {
+    // Todo: Check change of language
     val preferredLocale : PreferredLocale by lazy { (activity?.application as MGVApplication).preferredLocale }
 
     companion object {

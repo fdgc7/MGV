@@ -13,7 +13,7 @@ import com.fdanielgarcia.mygermanvocabulary.databinding.FragmentDefaultBinding
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class DefaultFragment : Fragment() {
-
+    // Todo: Change initial buttons to icons
     private var _binding: FragmentDefaultBinding? = null
 
     // This property is only valid between onCreateView and
