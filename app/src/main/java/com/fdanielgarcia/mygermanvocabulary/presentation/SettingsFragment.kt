@@ -7,11 +7,10 @@ import androidx.core.app.ActivityCompat.recreate
 import androidx.preference.*
 import com.fdanielgarcia.mygermanvocabulary.MGVApplication
 import com.fdanielgarcia.mygermanvocabulary.R
-import com.fdanielgarcia.mygermanvocabulary.use_cases.LocaleManagement
 import com.fdanielgarcia.mygermanvocabulary.use_cases.PreferredLocale
+import java.util.*
 
 class SettingsFragment : PreferenceFragmentCompat() {
-    // Todo: Check change of language
     val preferredLocale : PreferredLocale by lazy { (activity?.application as MGVApplication).preferredLocale }
 
     companion object {
@@ -27,8 +26,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
             findPreference<EditTextPreference>("preference_searching_min_chars")
 
         language?.setOnPreferenceChangeListener { _, newValue ->
+            Locale.setDefault(Locale(newValue as String))
             preferredLocale.setPreferredLocale(newValue as String)
-            LocaleManagement.applyLocalizedContext(requireContext(), newValue as String)
             recreate(activity as Activity)
             true
         }
