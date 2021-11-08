@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My German Vocabulary</string>
+    <string name="app_name">Mi Vocabulario de Alemán</string>
     <string name="load_files">Cargar Ficheros</string>
     <string name="back">Atrás</string>
     <string name="stored">Almacenado</string>
