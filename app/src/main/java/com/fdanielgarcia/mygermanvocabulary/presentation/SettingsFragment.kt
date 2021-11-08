@@ -2,6 +2,7 @@ package com.fdanielgarcia.mygermanvocabulary.presentation
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
 import androidx.core.app.ActivityCompat.recreate
 import androidx.preference.*
@@ -16,6 +17,18 @@ class SettingsFragment : PreferenceFragmentCompat() {
     companion object {
         const val INF_NUM_CHAR_LIMIT = 0
         const val SUP_NUM_CHAR_LIMIT = 10
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.action_german_pronouns).setVisible(false)
+        menu.findItem(R.id.action_german_prepositions).setVisible(false)
+        menu.findItem(R.id.action_settings).setVisible(false)
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
