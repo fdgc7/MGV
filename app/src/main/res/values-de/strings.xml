@@ -3,7 +3,7 @@
     <string name="app_name">Mein Deutschwortschatz</string>
     <string name="load_files">Dateien laden</string>
     <string name="back">Zurück</string>
-    <string name="stored">Gelagert</string>
+    <string name="stored">Gespeichert</string>
     <string name="all_substantives">Alle Substantive</string>
     <string name="masculine_substantives">Männliche Substantive</string>
     <string name="feminine_substantives">Weibliche Substantive</string>
@@ -13,7 +13,7 @@
     <string name="adverbs">Adverbien</string>
     <string name="conjunctions">Konjunktionen</string>
     <string name="prepositions">Präpositionen</string>
-    <string name="total">Gesamt</string>
+    <string name="total">Gesamtsumme</string>
     <string name="file_not_loaded">Datei nicht geladen</string>
     <string name="test_vocabulary">Vokabelprüfung</string>
     <string name="records_loaded">Datensätze geladen</string>

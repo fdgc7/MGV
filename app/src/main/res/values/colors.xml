@@ -9,9 +9,9 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 
-    <color name="der">#000000</color>
+    <color name="der">#0099CC</color>
     <color name="die">#CC0000</color>
-    <color name="das">#0099CC</color>
+    <color name="das">#00C853</color>
     <color name="no_art">#000000</color>
     <color name="unidentified">#2E2E2E</color>
 </resources>
