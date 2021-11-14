@@ -55,9 +55,10 @@
     <string name="adverb_content_label">Adverb | Bedeutung</string>
     <string name="conjunction_content_label">Konjunktion | Bedeutung</string>
     <string name="preposition_content_label">Präposition | Bedeutung</string>
-    <string name="action_settings">Einstellungen</string>
     <string name="action_german_pronouns">Deutsche Pronomen</string>
     <string name="action_german_prepositions">Deutsche Präpositionen</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_about">Über</string>
     <string name="settings_language">Sprache</string>
     <string name="settings_language_system">Handysprache</string>
     <string name="settings_language_german">Deutsch</string>
@@ -65,4 +66,6 @@
     <string name="settings_language_spanish">Spanisch</string>
     <string name="setting_searching_min_chars">Mindestanzahl von Zeichen bei der Suche</string>
     <string name="incorrect_value">Falscher Wert</string>
+    <string name="main_icons_license">"Icons des Hauptbildschirms von Freepik (www.freepik.com) von Flaticon (www.flaticon.com) "</string>
+    <string name="material_design_icons_license">Es verwendet Google Material Design-Icons</string>
 </resources>

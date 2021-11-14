@@ -28,6 +28,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         menu.findItem(R.id.action_german_pronouns).setVisible(false)
         menu.findItem(R.id.action_german_prepositions).setVisible(false)
         menu.findItem(R.id.action_settings).setVisible(false)
+        menu.findItem(R.id.action_about).setVisible(false)
         super.onPrepareOptionsMenu(menu)
     }
 

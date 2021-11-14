@@ -55,9 +55,10 @@
     <string name="adverb_content_label">Adverb | Meaning</string>
     <string name="conjunction_content_label">Conjunction | Meaning</string>
     <string name="preposition_content_label">Preposition | Meaning</string>
-    <string name="action_settings">Settings</string>
     <string name="action_german_pronouns">German Pronouns</string>
     <string name="action_german_prepositions">German Prepositions</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
     <string name="settings_language">Language</string>
     <string name="settings_language_system">Phone´s language</string>
     <string name="settings_language_german">German</string>
@@ -65,4 +66,6 @@
     <string name="settings_language_spanish">Spanish</string>
     <string name="setting_searching_min_chars">Minimum Number of Characters in Searching</string>
     <string name="incorrect_value">Incorrect Value</string>
+    <string name="main_icons_license">Icons of the main screen made by Freepik (www.freepik.com) from Flaticon (www.flaticon.com)</string>
+    <string name="material_design_icons_license">It uses Google Material Design icons</string>
 </resources>

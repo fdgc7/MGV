@@ -55,9 +55,10 @@
     <string name="adverb_content_label">Adverbio | Significado</string>
     <string name="conjunction_content_label">Conjunción | Significado</string>
     <string name="preposition_content_label">Preposición | Significado</string>
-    <string name="action_settings">Configuración</string>
     <string name="action_german_pronouns">Pronombres en Alemán</string>
     <string name="action_german_prepositions">Preposiciones en Alemán</string>
+    <string name="action_settings">Configuración</string>
+    <string name="action_about">Acerca de</string>
     <string name="settings_language">Idioma</string>
     <string name="settings_language_system">Idioma del teléfono</string>
     <string name="settings_language_german">Alemán</string>
@@ -65,4 +66,6 @@
     <string name="settings_language_spanish">Español</string>
     <string name="setting_searching_min_chars">Número Mínimo de Caracteres en Búsquedas</string>
     <string name="incorrect_value">Valor Incorrecto</string>
+    <string name="main_icons_license">Iconos de la pantalla principal creados por Freepik (www.freepik.com) de Flaticon (www.flaticon.com)</string>
+    <string name="material_design_icons_license">Se usan iconos de Google Material Design</string>
 </resources>
