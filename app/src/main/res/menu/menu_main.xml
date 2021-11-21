@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.fdanielgarcia.mygermanvocabulary.presentation.MainActivity">
     <item
+        android:id="@+id/action_search"
+        android:title="@string/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="20"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_german_pronouns"
         android:title="@string/action_german_pronouns"
         android:icon="@android:drawable/ic_menu_gallery"
@@ -13,6 +19,12 @@
         android:title="@string/action_german_prepositions"
         android:icon="@android:drawable/ic_menu_gallery"
         android:orderInCategory="70"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_german_adjectives"
+        android:title="@string/action_german_adjectives"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:orderInCategory="80"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"

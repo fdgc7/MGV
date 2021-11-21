@@ -3,6 +3,7 @@ package com.fdanielgarcia.mygermanvocabulary.presentation
 import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -26,6 +27,16 @@ class SearchFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.action_search).setVisible(false)
+        super.onPrepareOptionsMenu(menu)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

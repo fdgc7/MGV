@@ -55,8 +55,10 @@
     <string name="adverb_content_label">Adverb | Bedeutung</string>
     <string name="conjunction_content_label">Konjunktion | Bedeutung</string>
     <string name="preposition_content_label">Präposition | Bedeutung</string>
+    <string name="action_search">Suchen</string>
     <string name="action_german_pronouns">Deutsche Pronomen</string>
     <string name="action_german_prepositions">Deutsche Präpositionen</string>
+    <string name="action_german_adjectives">Deutsche Adjektive</string>
     <string name="action_settings">Einstellungen</string>
     <string name="action_about">Über</string>
     <string name="settings_language">Sprache</string>

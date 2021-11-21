@@ -40,7 +40,7 @@ class DefaultFragment : Fragment() {
         }
 
         binding.buttonSearch.setOnClickListener {
-            findNavController().navigate(R.id.action_DefaultFragment_to_SearchFragment)
+            findNavController().navigate(R.id.action_All_to_SearchFragment)
         }
     }
 

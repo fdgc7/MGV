@@ -19,7 +19,7 @@
             app:destination="@id/TestVocabularyFragment" />
 
         <action
-            android:id="@+id/action_DefaultFragment_to_SearchFragment"
+            android:id="@+id/action_All_to_SearchFragment"
             app:destination="@id/SearchFragment" />
 
         <action
@@ -36,6 +36,10 @@
         <action
             android:id="@+id/action_LoadFilesFragment_to_DefaultFragment"
             app:destination="@id/DefaultFragment" />
+
+        <action
+            android:id="@+id/action_All_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
 
         <action
             android:id="@+id/action_All_to_SettingsFragment"
@@ -65,6 +69,10 @@
             app:destination="@id/DefaultFragment" />
 
         <action
+            android:id="@+id/action_All_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+
+        <action
             android:id="@+id/action_All_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
     </fragment>
@@ -78,6 +86,10 @@
         <action
             android:id="@+id/action_ShowSubstantiveFragment_to_TestVocabularyFragment"
             app:destination="@id/TestVocabularyFragment" />
+
+        <action
+            android:id="@+id/action_All_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
 
         <action
             android:id="@+id/action_All_to_SettingsFragment"
@@ -95,6 +107,10 @@
             app:destination="@id/TestVocabularyFragment" />
 
         <action
+            android:id="@+id/action_All_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+
+        <action
             android:id="@+id/action_All_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
     </fragment>
@@ -110,6 +126,10 @@
             app:destination="@id/TestVocabularyFragment" />
 
         <action
+            android:id="@+id/action_All_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+
+        <action
             android:id="@+id/action_All_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
     </fragment>
@@ -121,6 +141,10 @@
         tools:layout="@layout/fragment_search">
 
         <action
+            android:id="@+id/action_All_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+
+        <action
             android:id="@+id/action_All_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
     </fragment>
@@ -129,6 +153,10 @@
         android:id="@+id/SettingsFragment"
         android:name="com.fdanielgarcia.mygermanvocabulary.presentation.SettingsFragment"
         android:label="@string/settings_fragment_label">
+
+        <action
+            android:id="@+id/action_All_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
 
         <action
             android:id="@+id/action_All_to_SettingsFragment"

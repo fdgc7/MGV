@@ -55,8 +55,10 @@
     <string name="adverb_content_label">Adverbio | Significado</string>
     <string name="conjunction_content_label">Conjunción | Significado</string>
     <string name="preposition_content_label">Preposición | Significado</string>
+    <string name="action_search">Buscar</string>
     <string name="action_german_pronouns">Pronombres en Alemán</string>
     <string name="action_german_prepositions">Preposiciones en Alemán</string>
+    <string name="action_german_adjectives">Adjetivos en Alemán</string>
     <string name="action_settings">Configuración</string>
     <string name="action_about">Acerca de</string>
     <string name="settings_language">Idioma</string>

@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -56,6 +55,10 @@ class MainActivity : BaseActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+            R.id.action_search -> {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_All_to_SearchFragment)
+                true
+            }
             R.id.action_german_pronouns -> {
                 val i = Intent(this, ShowGermanPronounsActivity::class.java)
                 startActivity(i)
