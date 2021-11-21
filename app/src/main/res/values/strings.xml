@@ -48,6 +48,7 @@
     <string name="search_fragment_label">Search</string>
     <string name="show_german_pronouns_activity_label">German Pronouns</string>
     <string name="show_german_prepositions_activity_label">German Prepositions</string>
+    <string name="show_german_adjectives_activity_label">German Adjectives</string>
     <string name="settings_fragment_label">Settings</string>
     <string name="substantive_content_label">Substantive | Meaning</string>
     <string name="verb_content_label">Infinitive | Present | Past | Perfect | Meaning</string>

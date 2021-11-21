@@ -69,6 +69,11 @@ class MainActivity : BaseActivity() {
                 startActivity(i)
                 true
             }
+            R.id.action_german_adjectives -> {
+                val i = Intent(this, ShowGermanAdjectivesActivity::class.java)
+                startActivity(i)
+                true
+            }
             R.id.action_settings -> {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_All_to_SettingsFragment)
                 true

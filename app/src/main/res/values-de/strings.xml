@@ -48,6 +48,7 @@
     <string name="search_fragment_label">Suchen</string>
     <string name="show_german_pronouns_activity_label">Deutsche Pronomen</string>
     <string name="show_german_prepositions_activity_label">Deutsche Präpositionen</string>
+    <string name="show_german_adjectives_activity_label">Deutsche Adjektive</string>
     <string name="settings_fragment_label">Einstellungen</string>
     <string name="substantive_content_label">Substantiv | Bedeutung</string>
     <string name="verb_content_label">Infinitiv | Präsens | Präteritum | Perfekt | Bedeutung</string>
