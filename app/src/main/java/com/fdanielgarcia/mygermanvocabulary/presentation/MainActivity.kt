@@ -17,6 +17,7 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.AppInformation
 import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 class MainActivity : BaseActivity() {
+    // TODO: Install scrcpy
     val appInformation by lazy { AppInformation(this) }
     val listManagement by lazy { ListManagement(this) }
 
