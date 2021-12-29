@@ -87,7 +87,7 @@ class SearchFragment : Fragment() {
                 activity,
                 vocabularyList.size()
                     .toString() + " " + activity?.resources?.getString(R.string.found),
-                Toast.LENGTH_LONG
+                Toast.LENGTH_SHORT
             ).show()
             searchResultAdapter?.updateData(vocabularyList)
         }

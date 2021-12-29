@@ -138,20 +138,20 @@ class LoadFilesFragment : Fragment() {
                 Toast.makeText(
                     activity,
                     numRecords.toString() + " " + activity?.resources?.getString(R.string.records_loaded),
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
             } else {
                 Toast.makeText(
                     activity,
                     activity?.resources?.getString(R.string.incorrect_file_format),
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
             }
         } else {
             Toast.makeText(
                 activity,
                 activity?.resources?.getString(R.string.file_not_loaded),
-                Toast.LENGTH_LONG
+                Toast.LENGTH_SHORT
             ).show()
         }
     }

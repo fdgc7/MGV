@@ -56,7 +56,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Toast.makeText(
                     activity,
                     activity?.resources?.getString(R.string.incorrect_value),
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 false
             }
@@ -64,7 +64,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 Toast.makeText(
                     activity,
                     activity?.resources?.getString(R.string.incorrect_value),
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 false
             } else { true }
