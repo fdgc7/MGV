@@ -46,9 +46,10 @@
     <string name="show_preposition_fragment_label">Preguntar Preposiciones</string>
     <string name="show_other_fragment_label">Other Otros</string>
     <string name="search_fragment_label">Buscar</string>
-    <string name="show_german_pronouns_activity_label">Pronombres en Alemán</string>
-    <string name="show_german_prepositions_activity_label">Preposiciones en Alemán</string>
-    <string name="show_german_adjectives_activity_label">Adjetivos en Alemán</string>
+    <string name="show_personal_pronouns_activity_label">Pronombres Personales</string>
+    <string name="show_prepositions_activity_label">Preposiciones</string>
+    <string name="show_comparatives_superlatives_activity_label">Comparativos y Superlativos</string>
+    <string name="show_adjective_declension_activity_label">Declinación de Adjetivos</string>
     <string name="settings_fragment_label">Configuración</string>
     <string name="substantive_content_label">Sustantivo | Significado</string>
     <string name="verb_content_label">Infinitivo | Presente | Pasado | Perfecto | Significado</string>
@@ -57,9 +58,10 @@
     <string name="conjunction_content_label">Conjunción | Significado</string>
     <string name="preposition_content_label">Preposición | Significado</string>
     <string name="action_search">Buscar</string>
-    <string name="action_german_pronouns">Pronombres en Alemán</string>
-    <string name="action_german_prepositions">Preposiciones en Alemán</string>
-    <string name="action_german_adjectives">Adjetivos en Alemán</string>
+    <string name="action_personal_pronouns">Pronombres Personales</string>
+    <string name="action_prepositions">Preposiciones</string>
+    <string name="action_comparatives_superlatives">Comparativos y Superlativos</string>
+    <string name="action_adjective_declension">Declinación de Adjetivos</string>
     <string name="action_settings">Configuración</string>
     <string name="action_about">Acerca de</string>
     <string name="settings_language">Idioma</string>

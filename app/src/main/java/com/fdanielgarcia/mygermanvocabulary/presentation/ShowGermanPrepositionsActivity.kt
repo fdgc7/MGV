@@ -1,16 +1,15 @@
 package com.fdanielgarcia.mygermanvocabulary.presentation
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.fdanielgarcia.mygermanvocabulary.databinding.ActivityShowGermanPrepositionsBinding
+import com.fdanielgarcia.mygermanvocabulary.databinding.ActivityShowPrepositionsBinding
 
 class ShowGermanPrepositionsActivity : BaseActivity() {
-    private lateinit var binding: ActivityShowGermanPrepositionsBinding
+    private lateinit var binding: ActivityShowPrepositionsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityShowGermanPrepositionsBinding.inflate(layoutInflater)
+        binding = ActivityShowPrepositionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }

@@ -26,9 +26,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.findItem(R.id.action_search).setVisible(false)
-        menu.findItem(R.id.action_german_pronouns).setVisible(false)
-        menu.findItem(R.id.action_german_prepositions).setVisible(false)
-        menu.findItem(R.id.action_german_adjectives).setVisible(false)
+        menu.findItem(R.id.action_personal_pronouns).setVisible(false)
+        menu.findItem(R.id.action_prepositions).setVisible(false)
+        menu.findItem(R.id.action_comparatives_superlatives).setVisible(false)
+        menu.findItem(R.id.action_adjective_declension).setVisible(false)
         menu.findItem(R.id.action_settings).setVisible(false)
         menu.findItem(R.id.action_about).setVisible(false)
         super.onPrepareOptionsMenu(menu)

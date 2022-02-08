@@ -5,11 +5,11 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageViewGermanPronouns"
+        android:id="@+id/imageViewAdjectiveDeclension"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/action_german_pronouns"
+        android:contentDescription="@string/action_adjective_declension"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/german_pronouns" />
+        app:srcCompat="@drawable/adjective_declension" />
 </androidx.constraintlayout.widget.ConstraintLayout>

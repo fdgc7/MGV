@@ -60,18 +60,23 @@ class MainActivity : BaseActivity() {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_All_to_SearchFragment)
                 true
             }
-            R.id.action_german_pronouns -> {
-                val i = Intent(this, ShowGermanPronounsActivity::class.java)
+            R.id.action_personal_pronouns -> {
+                val i = Intent(this, ShowPersonalPronounsActivity::class.java)
                 startActivity(i)
                 true
             }
-            R.id.action_german_prepositions -> {
+            R.id.action_prepositions -> {
                 val i = Intent(this, ShowGermanPrepositionsActivity::class.java)
                 startActivity(i)
                 true
             }
-            R.id.action_german_adjectives -> {
-                val i = Intent(this, ShowGermanAdjectivesActivity::class.java)
+            R.id.action_comparatives_superlatives -> {
+                val i = Intent(this, ShowComparativesSuperlativesActivity::class.java)
+                startActivity(i)
+                true
+            }
+            R.id.action_adjective_declension -> {
+                val i = Intent(this, ShowAdjectiveDeclensionActivity::class.java)
                 startActivity(i)
                 true
             }

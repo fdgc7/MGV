@@ -5,11 +5,11 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageViewGermanPrepositions"
+        android:id="@+id/imageViewPersonalPronouns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/action_german_prepositions"
+        android:contentDescription="@string/action_personal_pronouns"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/german_prepositions" />
+        app:srcCompat="@drawable/personal_pronouns" />
 </androidx.constraintlayout.widget.ConstraintLayout>

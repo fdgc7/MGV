@@ -9,22 +9,28 @@
         android:orderInCategory="20"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_german_pronouns"
-        android:title="@string/action_german_pronouns"
+        android:id="@+id/action_personal_pronouns"
+        android:title="@string/action_personal_pronouns"
         android:icon="@android:drawable/ic_menu_gallery"
         android:orderInCategory="50"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_german_prepositions"
-        android:title="@string/action_german_prepositions"
+        android:id="@+id/action_prepositions"
+        android:title="@string/action_prepositions"
         android:icon="@android:drawable/ic_menu_gallery"
         android:orderInCategory="70"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_german_adjectives"
-        android:title="@string/action_german_adjectives"
+        android:id="@+id/action_comparatives_superlatives"
+        android:title="@string/action_comparatives_superlatives"
         android:icon="@android:drawable/ic_menu_gallery"
         android:orderInCategory="80"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_adjective_declension"
+        android:title="@string/action_adjective_declension"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:orderInCategory="90"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"

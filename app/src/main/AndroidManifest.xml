@@ -24,16 +24,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.ShowGermanPronounsActivity"
-            android:label="@string/show_german_pronouns_activity_label"
+            android:name=".presentation.ShowPersonalPronounsActivity"
+            android:label="@string/show_personal_pronouns_activity_label"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".presentation.ShowGermanPrepositionsActivity"
-            android:label="@string/show_german_prepositions_activity_label"
+            android:label="@string/show_prepositions_activity_label"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".presentation.ShowGermanAdjectivesActivity"
-            android:label="@string/show_german_adjectives_activity_label"
+            android:name=".presentation.ShowComparativesSuperlativesActivity"
+            android:label="@string/show_comparatives_superlatives_activity_label"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".presentation.ShowAdjectiveDeclensionActivity"
+            android:label="@string/show_adjective_declension_activity_label"
             android:screenOrientation="portrait"/>
     </application>
 
