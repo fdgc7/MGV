@@ -13,6 +13,7 @@
     <string name="adverbs">Adverbios</string>
     <string name="conjunctions">Conjunciones</string>
     <string name="prepositions">Preposiciones</string>
+    <string name="pronouns">Pronombres</string>
     <string name="total">Total</string>
     <string name="file_not_loaded">Fichero No Cargado</string>
     <string name="test_vocabulary">Preguntar Vocabulario</string>
@@ -33,6 +34,7 @@
     <string name="adverb">Adverbio</string>
     <string name="conjunction">Conjunción</string>
     <string name="preposition">Preposición</string>
+    <string name="pronoun">Pronombre</string>
     <string name="other">Otro</string>
     <string name="meaning">Significado</string>
     <string name="default_fragment_label">Mi Vocabulario de Alemán</string>
@@ -44,10 +46,12 @@
     <string name="show_adverb_fragment_label">Preguntar Adverbios</string>
     <string name="show_conjunction_fragment_label">Preguntar Conjunciones</string>
     <string name="show_preposition_fragment_label">Preguntar Preposiciones</string>
+    <string name="show_pronoun_fragment_label">Preguntar Pronombres</string>
     <string name="show_other_fragment_label">Other Otros</string>
     <string name="search_fragment_label">Buscar</string>
     <string name="show_personal_pronouns_activity_label">Pronombres Personales</string>
     <string name="show_prepositions_activity_label">Preposiciones</string>
+    <string name="show_pronouns_activity_label">Pronombres</string>
     <string name="show_comparatives_superlatives_activity_label">Comparativos y Superlativos</string>
     <string name="show_adjective_declension_activity_label">Declinación de Adjetivos</string>
     <string name="settings_fragment_label">Configuración</string>
@@ -57,9 +61,11 @@
     <string name="adverb_content_label">Adverbio | Significado</string>
     <string name="conjunction_content_label">Conjunción | Significado</string>
     <string name="preposition_content_label">Preposición | Significado</string>
+    <string name="pronoun_content_label">Pronombre | Significado</string>
     <string name="action_search">Buscar</string>
     <string name="action_personal_pronouns">Pronombres Personales</string>
     <string name="action_prepositions">Preposiciones</string>
+    <string name="action_pronouns">Pronombres</string>
     <string name="action_comparatives_superlatives">Comparativos y Superlativos</string>
     <string name="action_adjective_declension">Declinación de Adjetivos</string>
     <string name="action_settings">Configuración</string>

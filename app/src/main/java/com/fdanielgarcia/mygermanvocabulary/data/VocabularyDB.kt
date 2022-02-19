@@ -60,13 +60,19 @@ object VocabularyContract {
         const val COLUMN_PREPOSITION = "preposition"
         const val COLUMN_MEANING = "meaning"
     }
+
+    object PronounsEntry : BaseColumns {
+        const val TABLE_NAME = "pronouns"
+        const val COLUMN_PRONOUN = "pronoun"
+        const val COLUMN_MEANING = "meaning"
+    }
 }
 
 class VocabularyDB(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         // If you change the database schema, you must increment the database version.
-        const val DATABASE_VERSION = 4
+        const val DATABASE_VERSION = 6
         const val DATABASE_NAME = "Vocabulary.db"
 
         private const val SQL_CREATE_MASCULINE_SUBSTANTIVES =
@@ -151,6 +157,16 @@ class VocabularyDB(context: Context) :
             "DROP TABLE IF EXISTS ${VocabularyContract.PrepositionsEntry.TABLE_NAME}"
         private const val SQL_DELETE_PREPOSITIONS =
             "DELETE FROM ${VocabularyContract.PrepositionsEntry.TABLE_NAME}"
+
+        private const val SQL_CREATE_PRONOUNS =
+            "CREATE TABLE ${VocabularyContract.PronounsEntry.TABLE_NAME} (" +
+                    "${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "${VocabularyContract.PronounsEntry.COLUMN_PRONOUN} TEXT, " +
+                    "${VocabularyContract.PronounsEntry.COLUMN_MEANING} TEXT)"
+        private const val SQL_DROP_PRONOUNS =
+            "DROP TABLE IF EXISTS ${VocabularyContract.PronounsEntry.TABLE_NAME}"
+        private const val SQL_DELETE_PRONOUNS =
+            "DELETE FROM ${VocabularyContract.PronounsEntry.TABLE_NAME}"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -162,6 +178,7 @@ class VocabularyDB(context: Context) :
         db.execSQL(SQL_CREATE_ADVERBS)
         db.execSQL(SQL_CREATE_CONJUNCTIONS)
         db.execSQL(SQL_CREATE_PREPOSITIONS)
+        db.execSQL(SQL_CREATE_PRONOUNS)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -173,6 +190,7 @@ class VocabularyDB(context: Context) :
         db.execSQL(SQL_DROP_ADVERBS)
         db.execSQL(SQL_DROP_CONJUNCTIONS)
         db.execSQL(SQL_DROP_PREPOSITIONS)
+        db.execSQL(SQL_DROP_PRONOUNS)
         onCreate(db)
     }
 
@@ -190,6 +208,7 @@ class VocabularyDB(context: Context) :
             "Adverbs" -> writableDatabase.execSQL(SQL_DELETE_ADVERBS)
             "Conjunctions" -> writableDatabase.execSQL(SQL_DELETE_CONJUNCTIONS)
             "Prepositions" -> writableDatabase.execSQL(SQL_DELETE_PREPOSITIONS)
+            "Pronouns" -> writableDatabase.execSQL(SQL_DELETE_PRONOUNS)
         }
     }
 
@@ -205,6 +224,7 @@ class VocabularyDB(context: Context) :
             "Adverbs" -> VocabularyContract.AdverbsEntry.TABLE_NAME
             "Conjunctions" -> VocabularyContract.ConjunctionsEntry.TABLE_NAME
             "Prepositions" -> VocabularyContract.PrepositionsEntry.TABLE_NAME
+            "Pronouns" -> VocabularyContract.PronounsEntry.TABLE_NAME
             else -> ""
         }
 
@@ -228,7 +248,7 @@ class VocabularyDB(context: Context) :
                         substantive.meaning
                     )
                 }
-                val newRowId = db.insert(
+                db.insert(
                     VocabularyContract.MasculineSubstantivesEntry.TABLE_NAME,
                     null,
                     values
@@ -242,7 +262,7 @@ class VocabularyDB(context: Context) :
                         substantive.meaning
                     )
                 }
-                val newRowId = db.insert(
+                db.insert(
                     VocabularyContract.FeminineSubstantivesEntry.TABLE_NAME,
                     null,
                     values
@@ -256,7 +276,7 @@ class VocabularyDB(context: Context) :
                         substantive.meaning
                     )
                 }
-                val newRowId = db.insert(
+                db.insert(
                     VocabularyContract.NeuterSubstantivesEntry.TABLE_NAME,
                     null,
                     values
@@ -415,7 +435,7 @@ class VocabularyDB(context: Context) :
             put(VocabularyContract.VerbsEntry.COLUMN_PERFECT, verb.perfect)
             put(VocabularyContract.VerbsEntry.COLUMN_MEANING, verb.meaning)
         }
-        val newRowId = db.insert(VocabularyContract.VerbsEntry.TABLE_NAME,null,values)
+        db.insert(VocabularyContract.VerbsEntry.TABLE_NAME,null,values)
     }
 
     fun getVerbs(): VerbList {
@@ -502,7 +522,7 @@ class VocabularyDB(context: Context) :
             put(VocabularyContract.AdjectivesEntry.COLUMN_ADJECTIVE, adjective.adjective)
             put(VocabularyContract.AdjectivesEntry.COLUMN_MEANING, adjective.meaning)
         }
-        val newRowId = db.insert(VocabularyContract.AdjectivesEntry.TABLE_NAME,null,values)
+        db.insert(VocabularyContract.AdjectivesEntry.TABLE_NAME,null,values)
     }
 
     fun getAdjectives(): AdjectiveList {
@@ -574,7 +594,7 @@ class VocabularyDB(context: Context) :
             put(VocabularyContract.AdverbsEntry.COLUMN_ADVERB, adverb.adverb)
             put(VocabularyContract.AdverbsEntry.COLUMN_MEANING, adverb.meaning)
         }
-        val newRowId = db.insert(VocabularyContract.AdverbsEntry.TABLE_NAME,null,values)
+        db.insert(VocabularyContract.AdverbsEntry.TABLE_NAME,null,values)
     }
 
     fun getAdverbs(): AdverbList {
@@ -646,7 +666,7 @@ class VocabularyDB(context: Context) :
             put(VocabularyContract.ConjunctionsEntry.COLUMN_CONJUNCTION, conjunction.conjunction)
             put(VocabularyContract.ConjunctionsEntry.COLUMN_MEANING, conjunction.meaning)
         }
-        val newRowId = db.insert(VocabularyContract.ConjunctionsEntry.TABLE_NAME,null,values)
+        db.insert(VocabularyContract.ConjunctionsEntry.TABLE_NAME,null,values)
     }
 
     fun getConjunctions(): ConjunctionList {
@@ -718,7 +738,7 @@ class VocabularyDB(context: Context) :
             put(VocabularyContract.PrepositionsEntry.COLUMN_PREPOSITION, preposition.preposition)
             put(VocabularyContract.PrepositionsEntry.COLUMN_MEANING, preposition.meaning)
         }
-        val newRowId = db.insert(VocabularyContract.PrepositionsEntry.TABLE_NAME,null,values)
+        db.insert(VocabularyContract.PrepositionsEntry.TABLE_NAME,null,values)
     }
 
     fun getPrepositions(): PrepositionList {
@@ -759,7 +779,7 @@ class VocabularyDB(context: Context) :
 
     fun searchPreposition(text: String): PrepositionList {
         val db = this.readableDatabase
-        val PrepositionList = PrepositionList()
+        val prepositionList = PrepositionList()
 
         val cursor = db.rawQuery("SELECT * FROM " +
                 VocabularyContract.PrepositionsEntry.TABLE_NAME + " WHERE " +
@@ -771,15 +791,87 @@ class VocabularyDB(context: Context) :
 
         with(cursor) {
             while (moveToNext()) {
-                val Preposition = Preposition(
+                val preposition = Preposition(
                     getString(getColumnIndexOrThrow(VocabularyContract.PrepositionsEntry.COLUMN_PREPOSITION)),
                     getString(getColumnIndexOrThrow(VocabularyContract.PrepositionsEntry.COLUMN_MEANING))
                 )
-                PrepositionList.add(Preposition)
+                prepositionList.add(preposition)
             }
             close()
         }
 
-        return PrepositionList
+        return prepositionList
+    }
+
+    fun insertPronoun(pronoun: Pronoun) {
+        val db = this.writableDatabase
+
+        val values = ContentValues().apply {
+            put(VocabularyContract.PronounsEntry.COLUMN_PRONOUN, pronoun.pronoun)
+            put(VocabularyContract.PronounsEntry.COLUMN_MEANING, pronoun.meaning)
+        }
+        db.insert(VocabularyContract.PronounsEntry.TABLE_NAME,null,values)
+    }
+
+    fun getPronouns(): PronounList {
+        val db = this.readableDatabase
+        val pronounList = PronounList()
+
+        // Define a projection that specifies which columns from the database
+        // you will actually use after this query.
+        val projection = arrayOf(
+            BaseColumns._ID,
+            VocabularyContract.PronounsEntry.COLUMN_PRONOUN,
+            VocabularyContract.PronounsEntry.COLUMN_MEANING
+        )
+
+        val cursor = db.query(
+            VocabularyContract.PronounsEntry.TABLE_NAME,          // The table to query
+            projection,         // The array of columns to return (pass null to get all)
+            null,       // The columns for the WHERE clause
+            null,    // The values for the WHERE clause
+            null,       // don't group the rows
+            null,        // don't filter by row groups
+            null         // The sort order
+        )
+
+        with(cursor) {
+            while (moveToNext()) {
+                val pronoun = Pronoun(
+                    getString(getColumnIndexOrThrow(VocabularyContract.PronounsEntry.COLUMN_PRONOUN)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.PronounsEntry.COLUMN_MEANING))
+                )
+                pronounList.add(pronoun)
+            }
+            close()
+        }
+
+        return pronounList
+    }
+
+    fun searchPronoun(text: String): PronounList {
+        val db = this.readableDatabase
+        val pronounList = PronounList()
+
+        val cursor = db.rawQuery("SELECT * FROM " +
+                VocabularyContract.PronounsEntry.TABLE_NAME + " WHERE " +
+                "LOWER(" + VocabularyContract.PronounsEntry.COLUMN_PRONOUN + ") " +
+                "LIKE LOWER('%" + text + "%') OR " +
+                "LOWER(" + VocabularyContract.PronounsEntry.COLUMN_MEANING + ") " +
+                "LIKE LOWER('%" + text + "%')",
+            null)
+
+        with(cursor) {
+            while (moveToNext()) {
+                val pronoun = Pronoun(
+                    getString(getColumnIndexOrThrow(VocabularyContract.PronounsEntry.COLUMN_PRONOUN)),
+                    getString(getColumnIndexOrThrow(VocabularyContract.PronounsEntry.COLUMN_MEANING))
+                )
+                pronounList.add(pronoun)
+            }
+            close()
+        }
+
+        return pronounList
     }
 }

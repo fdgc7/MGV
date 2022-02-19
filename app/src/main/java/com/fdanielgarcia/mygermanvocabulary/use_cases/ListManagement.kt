@@ -56,7 +56,8 @@ class ListManagement(val activity: Activity) {
         val adverbs = vocabularyDB.countElements("Adverbs")
         val conjunctions = vocabularyDB.countElements("Conjunctions")
         val prepositions = vocabularyDB.countElements("Prepositions")
-        val total = masSubs + femSubs + ntrSubs + verbs + adjectives + adverbs + conjunctions + prepositions
+        val pronouns = vocabularyDB.countElements("Pronouns")
+        val total = masSubs + femSubs + ntrSubs + verbs + adjectives + adverbs + conjunctions + prepositions + pronouns
 
         return  activity.resources?.getString(R.string.masculine_substantives) + ": " +
                 masSubs.toString() + "\n" +
@@ -74,6 +75,8 @@ class ListManagement(val activity: Activity) {
                 conjunctions.toString() + "\n" +
                 activity.resources?.getString(R.string.prepositions) + ": " +
                 prepositions.toString() + "\n" +
+                activity.resources?.getString(R.string.pronouns) + ": " +
+                pronouns.toString() + "\n" +
                 "\n" +
                 activity.resources?.getString(R.string.total) + ": " +
                 total.toString()

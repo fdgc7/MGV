@@ -13,6 +13,7 @@
     <string name="adverbs">Adverbien</string>
     <string name="conjunctions">Konjunktionen</string>
     <string name="prepositions">Präpositionen</string>
+    <string name="pronouns">Pronomen</string>
     <string name="total">Gesamtsumme</string>
     <string name="file_not_loaded">Datei nicht geladen</string>
     <string name="test_vocabulary">Vokabelprüfung</string>
@@ -33,6 +34,7 @@
     <string name="adverb">Adverb</string>
     <string name="conjunction">Konjunktion</string>
     <string name="preposition">Präposition</string>
+    <string name="pronoun">Pronomen</string>
     <string name="other">Andere</string>
     <string name="meaning">Bedeutung</string>
     <string name="default_fragment_label">Mein Deutschwortschatz</string>
@@ -44,10 +46,12 @@
     <string name="show_adverb_fragment_label">Adverb Prüfung</string>
     <string name="show_conjunction_fragment_label">Konjunktion Prüfung</string>
     <string name="show_preposition_fragment_label">Präposition Prüfung</string>
+    <string name="show_pronoun_fragment_label">Pronomen Prüfung</string>
     <string name="show_other_fragment_label">Andere Prüfung</string>
     <string name="search_fragment_label">Suchen</string>
     <string name="show_personal_pronouns_activity_label">Personalpronomen</string>
     <string name="show_prepositions_activity_label">Präpositionen</string>
+    <string name="show_pronouns_activity_label">Pronomen</string>
     <string name="show_comparatives_superlatives_activity_label">Komparative und Superlative</string>
     <string name="show_adjective_declension_activity_label">Adjektivdeklination</string>
     <string name="settings_fragment_label">Einstellungen</string>
@@ -57,9 +61,11 @@
     <string name="adverb_content_label">Adverb | Bedeutung</string>
     <string name="conjunction_content_label">Konjunktion | Bedeutung</string>
     <string name="preposition_content_label">Präposition | Bedeutung</string>
+    <string name="pronoun_content_label">Pronomen | Bedeutung</string>
     <string name="action_search">Suchen</string>
     <string name="action_personal_pronouns">Personalpronomen</string>
     <string name="action_prepositions">Präpositionen</string>
+    <string name="action_pronouns">Pronomen</string>
     <string name="action_comparatives_superlatives">Komparative und Superlative</string>
     <string name="action_adjective_declension">Adjektivdeklination</string>
     <string name="action_settings">Einstellungen</string>
