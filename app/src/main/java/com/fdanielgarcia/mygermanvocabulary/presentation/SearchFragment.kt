@@ -72,7 +72,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun search() {
-        val text = binding.editTextSearch.text.toString()
+        val pattern = " *$".toRegex()
+        val text = pattern.replace(binding.editTextSearch.text.toString(),"")
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
         minCharacters = Integer.parseInt(
             sharedPref.getString(
