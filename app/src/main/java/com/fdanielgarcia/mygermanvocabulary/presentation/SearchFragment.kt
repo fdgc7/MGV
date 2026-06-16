@@ -1,6 +1,5 @@
 package com.fdanielgarcia.mygermanvocabulary.presentation
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -18,7 +17,7 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 
 class SearchFragment : Fragment() {
-    val listManagement by lazy { ListManagement(activity as Activity) }
+    val listManagement by lazy { ListManagement(requireActivity()) }
     private var vocabularyList = VocabularyList()
     private var searchResultAdapter: SearchResultAdapter? = null
     private var _binding: FragmentSearchBinding? = null
@@ -42,7 +41,7 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (activity as MainActivity).hideFab()
+        (requireActivity() as MainActivity).hideFab()
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -67,14 +66,14 @@ class SearchFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (activity as MainActivity).showFab()
+        (requireActivity() as MainActivity).showFab()
         _binding = null
     }
 
     private fun search() {
         val pattern = " *$".toRegex()
         val text = pattern.replace(binding.editTextSearch.text.toString(),"")
-        val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
         minCharacters = Integer.parseInt(
             sharedPref.getString(
                 "preference_searching_min_chars",
@@ -85,9 +84,9 @@ class SearchFragment : Fragment() {
         if (text.length >= minCharacters) {
             vocabularyList = listManagement.searchResultList(text)
             Toast.makeText(
-                activity,
+                requireContext(),
                 vocabularyList.size()
-                    .toString() + " " + activity?.resources?.getString(R.string.found),
+                    .toString() + " " + getString(R.string.found),
                 Toast.LENGTH_SHORT
             ).show()
             searchResultAdapter?.updateData(vocabularyList)

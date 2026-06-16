@@ -21,7 +21,13 @@ open class OnSwipeTouchListener(ctx: Context) : View.OnTouchListener {
     }
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
-        return gestureDetector.onTouchEvent(event)
+        if (gestureDetector.onTouchEvent(event)) {
+            return true
+        }
+        if (event.action == MotionEvent.ACTION_UP) {
+            v.performClick()
+        }
+        return false
     }
 
     private inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
@@ -30,13 +36,14 @@ open class OnSwipeTouchListener(ctx: Context) : View.OnTouchListener {
             return true
         }
 
-        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+        override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
             var result = false
             try {
+                if (e1 == null) return false
                 val diffY = e2.y - e1.y
                 val diffX = e2.x - e1.x
                 if (abs(diffX) > abs(diffY)) {
-                    if (abs(diffX) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (abs(diffX) > SWIPE_THRESHOLD && (abs(velocityX) > SWIPE_VELOCITY_THRESHOLD)) {
                         if (diffX > 0) {
                             onSwipeRight()
                         } else {
@@ -44,7 +51,7 @@ open class OnSwipeTouchListener(ctx: Context) : View.OnTouchListener {
                         }
                         result = true
                     }
-                } else if (abs(diffY) > SWIPE_THRESHOLD && abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+                } else if (abs(diffY) > SWIPE_THRESHOLD && (abs(velocityY) > SWIPE_VELOCITY_THRESHOLD)) {
                     if (diffY > 0) {
                         onSwipeBottom()
                     } else {
