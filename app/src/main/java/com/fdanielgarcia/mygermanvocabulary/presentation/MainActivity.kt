@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -26,6 +27,7 @@ class MainActivity : BaseActivity() {
     val vocabularyDB by lazy { (application as MGVApplication).vocabularyDB }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)

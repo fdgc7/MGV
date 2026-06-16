@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.MyGermanVocabulary.NoActionBar" parent="Theme.MyGermanVocabulary">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>
