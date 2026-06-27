@@ -26,6 +26,7 @@ class LoadFilesFragment : Fragment() {
     private lateinit var loadAdverbLauncher: ActivityResultLauncher<Intent>
     private lateinit var loadConjunctionLauncher: ActivityResultLauncher<Intent>
     private lateinit var loadPrepositionLauncher: ActivityResultLauncher<Intent>
+    private lateinit var loadPronounLauncher: ActivityResultLauncher<Intent>
     private var _binding: FragmentLoadFilesBinding? = null
 
     // This property is only valid between onCreateView and
@@ -74,6 +75,11 @@ class LoadFilesFragment : Fragment() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 manageResult(result,"Prepositions")
             }
+
+        loadPronounLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                manageResult(result,"Pronouns")
+            }
     }
 
     override fun onCreateView(
@@ -118,6 +124,10 @@ class LoadFilesFragment : Fragment() {
 
         binding.buttonLoadPrepositions.setOnClickListener {
             fileManagement.loadFile(loadPrepositionLauncher)
+        }
+
+        binding.buttonLoadPronouns.setOnClickListener {
+            fileManagement.loadFile(loadPronounLauncher)
         }
 
         binding.buttonBack.setOnClickListener {

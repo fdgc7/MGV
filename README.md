@@ -23,12 +23,13 @@ Supported categories:
 | Adverbs | `Adverb`, `Bedeutung` |
 | Conjunctions | `Konjunktion`, `Bedeutung` |
 | Prepositions | `Präposition`, `Bedeutung` |
+| Pronouns | `Pronomen`, `Bedeutung` |
 
 Files are read as **ISO-8859-1** with **semicolon** (`;`) delimiters.
 
 ### Vocabulary tests (flashcards)
 
-Practice by category: all nouns, masculine/feminine/neuter nouns, verbs, adjectives, adverbs, conjunctions, or prepositions.
+Practice by category: all nouns, masculine/feminine/neuter nouns, verbs, adjectives, adverbs, conjunctions, prepositions, or pronouns.
 
 - A random entry is shown; tap or swipe to reveal the meaning.
 - Nouns hide the article at first, then reveal gender with color coding (`der` / `die` / `das`).
@@ -95,4 +96,6 @@ Navigation is handled with the Android Navigation Component (`nav_graph.xml`). U
 
 ## For contributors
 
-See [AGENTS.md](AGENTS.md) for conventions and guidance when working with AI coding tools in this repository.
+- [AGENTS.md](AGENTS.md) — conventions and guidance for AI coding tools
+- [KNOWN_ISSUES.md](KNOWN_ISSUES.md) — pre-existing bugs and technical debt to revisit
+- [MANUAL_TEST_CHECKLIST.md](MANUAL_TEST_CHECKLIST.md) — device/emulator test plan before releases

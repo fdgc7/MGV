@@ -106,6 +106,18 @@ class SearchResultAdapter(
                 holder.textViewContent.text =
                     vocabulary.preposition + " | " + vocabulary.meaning
             }
+            vocabulary is Pronoun -> {
+                holder.textViewContentLabel.text =
+                    context.resources.getString(R.string.pronoun_content_label)
+                holder.textViewContent.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.unidentified
+                    )
+                )
+                holder.textViewContent.text =
+                    vocabulary.pronoun + " | " + vocabulary.meaning
+            }
         }
     }
 

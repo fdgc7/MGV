@@ -42,6 +42,9 @@ class ListManagement(val activity: Activity) {
             "Prepositions" -> {
                 vocabularyList = vocabularyDB.getPrepositions()
             }
+            "Pronouns" -> {
+                vocabularyList = vocabularyDB.getPronouns()
+            }
         }
 
         return vocabularyList
@@ -104,6 +107,7 @@ class ListManagement(val activity: Activity) {
         vocabularyList.addAll(vocabularyDB.searchAdverbs(text))
         vocabularyList.addAll(vocabularyDB.searchConjunction(text))
         vocabularyList.addAll(vocabularyDB.searchPreposition(text))
+        vocabularyList.addAll(vocabularyDB.searchPronoun(text))
 
         return vocabularyList
     }

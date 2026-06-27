@@ -108,6 +108,15 @@ class TestVocabularyFragment : Fragment() {
         }
         binding.buttonTestPrepositions.isEnabled = listManagement.hasData("Prepositions")
 
+        binding.buttonTestPronouns.setOnClickListener {
+            val pronounList = listManagement.loadList("Pronouns") as PronounList
+            val bundle = Bundle()
+            bundle.putString("showOtherFragmentTitle",activity?.resources?.getString(R.string.show_pronoun_fragment_label))
+            bundle.putParcelable("List", pronounList)
+            findNavController().navigate(R.id.action_TestVocabularyFragment_to_ShowOtherFragment, bundle)
+        }
+        binding.buttonTestPronouns.isEnabled = listManagement.hasData("Pronouns")
+
         binding.buttonBack.setOnClickListener {
             findNavController().navigate(R.id.action_TestVocabularyFragment_to_DefaultFragment)
         }

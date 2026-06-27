@@ -82,6 +82,9 @@ class ShowOtherFragment : Fragment() {
             vocabularyList is PrepositionList -> {
                 binding.textViewTitleOther.text = activity?.resources?.getString(R.string.preposition)
             }
+            vocabularyList is PronounList -> {
+                binding.textViewTitleOther.text = activity?.resources?.getString(R.string.pronoun)
+            }
         }
 
         showNextName()
@@ -114,6 +117,11 @@ class ShowOtherFragment : Fragment() {
                 binding.textViewOther.text = (vocabulary as Preposition).preposition
                 binding.textViewMeaning.text = ""
             }
+            vocabularyList is PronounList -> {
+                vocabulary = vocabularyList.randomElement()
+                binding.textViewOther.text = (vocabulary as Pronoun).pronoun
+                binding.textViewMeaning.text = ""
+            }
         }
     }
 
@@ -130,6 +138,9 @@ class ShowOtherFragment : Fragment() {
             }
             vocabularyList is PrepositionList -> {
                 binding.textViewMeaning.text = (vocabulary as Preposition).meaning
+            }
+            vocabularyList is PronounList -> {
+                binding.textViewMeaning.text = (vocabulary as Pronoun).meaning
             }
         }
     }

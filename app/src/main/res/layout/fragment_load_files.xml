@@ -84,12 +84,22 @@
         android:id="@+id/button_load_prepositions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
         android:text="@string/prepositions"
-        app:layout_constraintBottom_toTopOf="@+id/button_back"
+        app:layout_constraintBottom_toTopOf="@+id/button_load_pronouns"
         app:layout_constraintEnd_toEndOf="@+id/button_load_conjunctions"
         app:layout_constraintStart_toStartOf="@+id/button_load_conjunctions"
         app:layout_constraintTop_toBottomOf="@+id/button_load_conjunctions" />
+
+    <Button
+        android:id="@+id/button_load_pronouns"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/pronouns"
+        app:layout_constraintBottom_toTopOf="@+id/button_back"
+        app:layout_constraintEnd_toEndOf="@+id/button_load_prepositions"
+        app:layout_constraintStart_toStartOf="@+id/button_load_prepositions"
+        app:layout_constraintTop_toBottomOf="@+id/button_load_prepositions" />
 
     <Button
         android:id="@+id/button_back"

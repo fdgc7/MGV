@@ -119,6 +119,15 @@ class FileManagement(val activity: Activity) {
                     }
 
                 }
+                "Pronouns" -> {
+                    for (csvRecord in csvParser) {
+                        val pronoun = Pronoun(
+                            csvRecord.get("Pronomen"),
+                            csvRecord.get("Bedeutung")
+                        )
+                        vocabularyDB.insertPronoun(pronoun)
+                    }
+                }
             }
             numRecords = vocabularyDB.countElements(fileType)
         } catch (e: Exception) {numRecords = -1}

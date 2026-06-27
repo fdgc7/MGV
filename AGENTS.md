@@ -58,7 +58,7 @@ Do not change column names or delimiters without updating `FileManagement.kt` an
 - Encoding: **ISO-8859-1**
 - Delimiter: **semicolon** (`;`)
 - Format: RFC 4180 with header row
-- Headers per type: see README.md table (`der`/`die`/`das`, `Infinitiv`, `Bedeutung`, …)
+- Headers per type: see README.md table (`der`/`die`/`das`, `Infinitiv`, `Präposition`, `Pronomen`, `Bedeutung`, …)
 - Import replaces existing data for that category (`emptyTable` before insert)
 
 ## Database changes
@@ -101,3 +101,5 @@ Add new user-facing strings to **all three** when changing UI text.
 ## Related docs
 
 - [README.md](README.md) — product overview and CSV format reference for users
+- [KNOWN_ISSUES.md](KNOWN_ISSUES.md) — pre-existing bugs and technical debt
+- [MANUAL_TEST_CHECKLIST.md](MANUAL_TEST_CHECKLIST.md) — manual test plan before releases
