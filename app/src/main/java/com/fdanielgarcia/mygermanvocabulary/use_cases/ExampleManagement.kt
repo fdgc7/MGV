@@ -1,72 +1,37 @@
 package com.fdanielgarcia.mygermanvocabulary.use_cases
 
-import com.google.mlkit.genai.common.DownloadCallback
-import com.google.mlkit.genai.common.DownloadConfig
-import com.google.mlkit.genai.inference.GenerativeModel
-import com.google.mlkit.genai.inference.GenerativeModelConfig
-import com.google.mlkit.genai.inference.GenerativeModelStatus
-import com.google.mlkit.genai.inference.InferenceParams
-import kotlin.coroutines.resume
-import kotlinx.coroutines.suspendCancellableCoroutine
+import com.google.mlkit.genai.common.DownloadStatus
+import com.google.mlkit.genai.common.FeatureStatus
+import com.google.mlkit.genai.prompt.Generation
 
 class ExampleManagement {
 
-    private var model: GenerativeModel? = null
-    private var prepared = false
+    private val generativeModel = Generation.getClient()
 
-    private suspend fun checkAndPrepare(): Result<Unit> = suspendCancellableCoroutine { cont ->
-        if (prepared && model != null) {
-            cont.resume(Result.success(Unit))
-            return@suspendCancellableCoroutine
-        }
-        try {
-            val config = GenerativeModelConfig.builder()
-                .build()
-            val generativeModel = GenerativeModel.getInstance(config)
-            generativeModel.checkStatus()
-                .addOnSuccessListener { status ->
-                    when (status) {
-                        GenerativeModelStatus.AVAILABLE -> {
-                            model = generativeModel
-                            prepared = true
-                            cont.resume(Result.success(Unit))
-                        }
-                        GenerativeModelStatus.DOWNLOADING, GenerativeModelStatus.DOWNLOADABLE -> {
-                            generativeModel.download(
-                                DownloadConfig.builder().build(),
-                                object : DownloadCallback {
-                                    override fun onDownloadCompleted() {
-                                        model = generativeModel
-                                        prepared = true
-                                        if (cont.isActive) cont.resume(Result.success(Unit))
-                                    }
-                                    override fun onDownloadFailed(e: Exception) {
-                                        if (cont.isActive) cont.resume(Result.failure(e))
-                                    }
-                                    override fun onDownloadStarted(bytesToDownload: Long) {}
-                                    override fun onDownloadProgress(
-                                        totalBytesDownloaded: Long,
-                                        totalBytesToDownload: Long
-                                    ) {}
-                                }
-                            )
-                            if (status == GenerativeModelStatus.DOWNLOADING && cont.isActive) {
-                                // Resume with a specific "DOWNLOADING" failure so the UI can show the appropriate message
-                                cont.resume(Result.failure(Exception("DOWNLOADING")))
+    suspend fun checkAndPrepare(): Result<Unit> {
+        return try {
+            when (generativeModel.checkStatus()) {
+                FeatureStatus.AVAILABLE -> Result.success(Unit)
+                FeatureStatus.DOWNLOADING -> Result.failure(Exception("DOWNLOADING"))
+                FeatureStatus.DOWNLOADABLE -> {
+                    var downloadResult: Result<Unit> = Result.failure(Exception("DOWNLOAD_FAILED"))
+                    generativeModel.download().collect { status ->
+                        when (status) {
+                            DownloadStatus.DownloadCompleted -> {
+                                downloadResult = Result.success(Unit)
                             }
-                        }
-                        else -> {
-                            cont.resume(
-                                Result.failure(Exception("UNAVAILABLE"))
-                            )
+                            is DownloadStatus.DownloadFailed -> {
+                                downloadResult = Result.failure(status.e)
+                            }
+                            else -> {}
                         }
                     }
+                    downloadResult
                 }
-                .addOnFailureListener { e ->
-                    if (cont.isActive) cont.resume(Result.failure(e))
-                }
+                else -> Result.failure(Exception("UNAVAILABLE"))
+            }
         } catch (e: Exception) {
-            if (cont.isActive) cont.resume(Result.failure(e))
+            Result.failure(e)
         }
     }
 
@@ -82,28 +47,16 @@ class ExampleManagement {
             return Result.failure(Exception(msg))
         }
 
-        val currentModel = model
-            ?: return Result.failure(Exception("UNAVAILABLE"))
-
-        val prompt =
-            "Write exactly one German sentence using the word \"$word\" ($wordType). " +
-            "The sentence must be between $minWords and $maxWords words long. " +
-            "Reply with only the sentence."
-
-        return suspendCancellableCoroutine { cont ->
-            try {
-                val params = InferenceParams.builder().build()
-                currentModel.generateContent(prompt, params)
-                    .addOnSuccessListener { response ->
-                        val text = response.text?.trim() ?: ""
-                        if (cont.isActive) cont.resume(Result.success(text))
-                    }
-                    .addOnFailureListener { e ->
-                        if (cont.isActive) cont.resume(Result.failure(e))
-                    }
-            } catch (e: Exception) {
-                if (cont.isActive) cont.resume(Result.failure(e))
-            }
+        return try {
+            val prompt =
+                "Write exactly one German sentence using the word \"$word\" ($wordType). " +
+                "The sentence must be between $minWords and $maxWords words long. " +
+                "Reply with only the sentence."
+            val response = generativeModel.generateContent(prompt)
+            val text = response.candidates.firstOrNull()?.text?.trim() ?: ""
+            Result.success(text)
+        } catch (e: Exception) {
+            Result.failure(e)
         }
     }
 }
