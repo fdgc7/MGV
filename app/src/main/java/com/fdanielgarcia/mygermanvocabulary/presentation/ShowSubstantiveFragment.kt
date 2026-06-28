@@ -71,7 +71,7 @@ class ShowSubstantiveFragment : Fragment() {
                 val minWords = prefs.getString("preference_example_min_words", "5")?.toIntOrNull() ?: 5
                 val maxWords = prefs.getString("preference_example_max_words", "20")?.toIntOrNull() ?: 20
                 val word = vocabularyManagement.removeSubstantivePlural(substantive.name)
-                val result = exampleManagement.generateExample(word, getString(R.string.substantive), minWords, maxWords)
+                val result = exampleManagement.generateExample(word, "noun", minWords, maxWords)
                 result.fold(
                     onSuccess = { sentence ->
                         AlertDialog.Builder(requireContext())
@@ -81,10 +81,10 @@ class ShowSubstantiveFragment : Fragment() {
                             .show()
                     },
                     onFailure = {
-                        val msg = if (it.message == "UNAVAILABLE") {
-                            getString(R.string.example_unavailable)
-                        } else {
-                            it.message
+                        val msg = when (it.message) {
+                            "UNAVAILABLE" -> getString(R.string.example_unavailable)
+                            "DOWNLOADING" -> getString(R.string.example_downloading)
+                            else -> it.message
                         }
                         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
                     }

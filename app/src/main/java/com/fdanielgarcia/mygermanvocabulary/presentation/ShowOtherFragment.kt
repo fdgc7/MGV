@@ -76,11 +76,11 @@ class ShowOtherFragment : Fragment() {
                     else -> ""
                 }
                 val wordType = when {
-                    vocabularyList is AdjectiveList   -> getString(R.string.adjective)
-                    vocabularyList is AdverbList      -> getString(R.string.adverb)
-                    vocabularyList is ConjunctionList -> getString(R.string.conjunction)
-                    vocabularyList is PrepositionList -> getString(R.string.preposition)
-                    vocabularyList is PronounList     -> getString(R.string.pronoun)
+                    vocabularyList is AdjectiveList   -> "adjective"
+                    vocabularyList is AdverbList      -> "adverb"
+                    vocabularyList is ConjunctionList -> "conjunction"
+                    vocabularyList is PrepositionList -> "preposition"
+                    vocabularyList is PronounList     -> "pronoun"
                     else -> ""
                 }
                 val result = exampleManagement.generateExample(word, wordType, minWords, maxWords)
@@ -93,10 +93,10 @@ class ShowOtherFragment : Fragment() {
                             .show()
                     },
                     onFailure = {
-                        val msg = if (it.message == "UNAVAILABLE") {
-                            getString(R.string.example_unavailable)
-                        } else {
-                            it.message
+                        val msg = when (it.message) {
+                            "UNAVAILABLE" -> getString(R.string.example_unavailable)
+                            "DOWNLOADING" -> getString(R.string.example_downloading)
+                            else -> it.message
                         }
                         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
                     }

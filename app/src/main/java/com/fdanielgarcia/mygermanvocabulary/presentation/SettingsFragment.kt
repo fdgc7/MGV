@@ -41,8 +41,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val language = findPreference<ListPreference>("preference_language")
         val searchingMinChars =
             findPreference<EditTextPreference>("preference_searching_min_chars")
-        val exampleMinChars = findPreference<EditTextPreference>("preference_example_min_words")
-        val exampleMaxChars = findPreference<EditTextPreference>("preference_example_max_words")
+        val exampleMinWords = findPreference<EditTextPreference>("preference_example_min_words")
+        val exampleMaxWords = findPreference<EditTextPreference>("preference_example_max_words")
 
         language?.setOnPreferenceChangeListener { _, newValue ->
             Locale.setDefault(Locale(newValue as String))
@@ -73,7 +73,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             } else { true }
         }
 
-        exampleMinChars?.setOnPreferenceChangeListener { _, newValue ->
+        exampleMinWords?.setOnPreferenceChangeListener { _, newValue ->
             val min = (newValue as String).toIntOrNull()
             if (min == null || min <= 0) {
                 Toast.makeText(activity, activity?.resources?.getString(R.string.incorrect_value), Toast.LENGTH_SHORT).show()
@@ -88,7 +88,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             true
         }
 
-        exampleMaxChars?.setOnPreferenceChangeListener { _, newValue ->
+        exampleMaxWords?.setOnPreferenceChangeListener { _, newValue ->
             val max = (newValue as String).toIntOrNull()
             if (max == null || max <= 0) {
                 Toast.makeText(activity, activity?.resources?.getString(R.string.incorrect_value), Toast.LENGTH_SHORT).show()

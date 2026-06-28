@@ -31,12 +31,7 @@ class ExampleManagement {
                             prepared = true
                             cont.resume(Result.success(Unit))
                         }
-                        GenerativeModelStatus.DOWNLOADING -> {
-                            model = generativeModel
-                            prepared = true
-                            cont.resume(Result.success(Unit))
-                        }
-                        GenerativeModelStatus.DOWNLOADABLE -> {
+                        GenerativeModelStatus.DOWNLOADING, GenerativeModelStatus.DOWNLOADABLE -> {
                             generativeModel.download(
                                 DownloadConfig.builder().build(),
                                 object : DownloadCallback {
@@ -55,6 +50,10 @@ class ExampleManagement {
                                     ) {}
                                 }
                             )
+                            if (status == GenerativeModelStatus.DOWNLOADING && cont.isActive) {
+                                // Resume with a specific "DOWNLOADING" failure so the UI can show the appropriate message
+                                cont.resume(Result.failure(Exception("DOWNLOADING")))
+                            }
                         }
                         else -> {
                             cont.resume(
@@ -80,11 +79,7 @@ class ExampleManagement {
         val prepResult = checkAndPrepare()
         if (prepResult.isFailure) {
             val msg = prepResult.exceptionOrNull()?.message ?: "Unknown error"
-            return if (msg == "UNAVAILABLE") {
-                Result.failure(Exception("UNAVAILABLE"))
-            } else {
-                Result.failure(Exception(msg))
-            }
+            return Result.failure(Exception(msg))
         }
 
         val currentModel = model
