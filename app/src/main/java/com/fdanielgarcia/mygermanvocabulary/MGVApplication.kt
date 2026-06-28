@@ -6,11 +6,13 @@ import android.content.res.Configuration
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
 import com.fdanielgarcia.mygermanvocabulary.data.VocabularyDB
+import com.fdanielgarcia.mygermanvocabulary.use_cases.ExampleManagement
 import com.fdanielgarcia.mygermanvocabulary.use_cases.LocaleManagement
 import com.fdanielgarcia.mygermanvocabulary.use_cases.PreferredLocale
 
 class MGVApplication : Application() {
     val vocabularyDB = VocabularyDB(this)
+    val exampleManagement: ExampleManagement by lazy { ExampleManagement() }
 
     private var currentLocaleContext: Context? = null
     val preferredLocale: PreferredLocale by lazy {

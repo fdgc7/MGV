@@ -77,6 +77,12 @@
     <string name="settings_language_spanish">Spanisch</string>
     <string name="setting_searching_min_chars">Mindestanzahl von Zeichen bei der Suche</string>
     <string name="incorrect_value">Falscher Wert</string>
+    <string name="example">Beispiel</string>
+    <string name="example_dialog_title">Beispielsatz</string>
+    <string name="setting_example_min_words">Min. Satzlänge (Wörter)</string>
+    <string name="setting_example_max_words">Max. Satzlänge (Wörter)</string>
+    <string name="example_unavailable">Beispielsätze auf diesem Gerät nicht verfügbar</string>
+    <string name="example_downloading">Sprachmodell wird heruntergeladen…</string>
     <string name="main_icons_license">"Icons des Hauptbildschirms von Freepik (www.freepik.com) von Flaticon (www.flaticon.com) "</string>
     <string name="material_design_icons_license">Es verwendet Google Material Design-Icons</string>
 </resources>

@@ -20,4 +20,22 @@
         app:allowDividerAbove="true"
         app:allowDividerBelow="true"
         app:useSimpleSummaryProvider="true" />
+
+    <EditTextPreference
+        android:key="preference_example_min_words"
+        android:title="@string/setting_example_min_words"
+        android:inputType="number"
+        android:defaultValue="5"
+        android:selectAllOnFocus="true"
+        app:allowDividerAbove="true"
+        app:useSimpleSummaryProvider="true" />
+
+    <EditTextPreference
+        android:key="preference_example_max_words"
+        android:title="@string/setting_example_max_words"
+        android:inputType="number"
+        android:defaultValue="20"
+        android:selectAllOnFocus="true"
+        app:allowDividerAbove="true"
+        app:useSimpleSummaryProvider="true" />
 </PreferenceScreen>

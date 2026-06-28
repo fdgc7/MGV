@@ -77,6 +77,12 @@
     <string name="settings_language_spanish">Español</string>
     <string name="setting_searching_min_chars">Número Mínimo de Caracteres en Búsquedas</string>
     <string name="incorrect_value">Valor Incorrecto</string>
+    <string name="example">Ejemplo</string>
+    <string name="example_dialog_title">Frase de ejemplo</string>
+    <string name="setting_example_min_words">Long. mínima de frase (palabras)</string>
+    <string name="setting_example_max_words">Long. máxima de frase (palabras)</string>
+    <string name="example_unavailable">Frases de ejemplo no disponibles en este dispositivo</string>
+    <string name="example_downloading">Descargando modelo de idioma…</string>
     <string name="main_icons_license">Iconos de la pantalla principal creados por Freepik (www.freepik.com) de Flaticon (www.flaticon.com)</string>
     <string name="material_design_icons_license">Se usan iconos de Google Material Design</string>
 </resources>

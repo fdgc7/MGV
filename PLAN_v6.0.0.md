@@ -1,7 +1,9 @@
 # MGV v6.0.0 — On-Device Example Sentence Feature
 
-> **How to use this file:** In a future session, tell the AI agent:
-> "Read `PLAN_v6.0.0.md` and implement it."
+> **Status: implemented** (v6.0.0 / versionCode 41)
+>
+> ~~How to use this file: In a future session, tell the AI agent:~~
+> ~~"Read `PLAN_v6.0.0.md` and implement it."~~
 
 ## Overview
 
@@ -33,7 +35,7 @@ flowchart TD
     EM -->|"Prompt API"| GN
     GN -->|"generated sentence"| EM
     SF --> SP
-    EM -->|"reads min/max chars"| SP
+    EM -->|"reads min/max words"| SP
 ```
 
 ## Key constraints from ML Kit Prompt API
@@ -54,9 +56,9 @@ flowchart TD
 
 ### 2. New use-case: `use_cases/ExampleManagement.kt`
 - Holds a single `GenerativeModel` instance obtained from `Generation.getClient()`.
-- Exposes `suspend fun generateExample(word: String, wordType: String, minChars: Int, maxChars: Int): Result<String>`.
+- Exposes `suspend fun generateExample(word: String, wordType: String, minWords: Int, maxWords: Int): Result<String>`.
 - Prompt template (English, Gemini Nano's validated language):
-  > `"Write exactly one German sentence using the word \"<word>\" (<wordType>). The sentence must be between <min> and <max> characters long. Reply with only the sentence."`
+  > `"Write exactly one German sentence using the word \"<word>\" (<wordType>). The sentence must be between <min> and <max> words long. Reply with only the sentence."`
 - Returns `Result.failure` with a user-friendly message when status is `UNAVAILABLE` or an exception is thrown.
 - `checkAndPrepare()` — called lazily on first button tap to check/download the model.
 
@@ -64,27 +66,26 @@ flowchart TD
 Add two `EditTextPreference` entries after the existing ones:
 ```xml
 <EditTextPreference
-    android:key="preference_example_min_chars"
-    android:title="@string/setting_example_min_chars"
+    android:key="preference_example_min_words"
+    android:title="@string/setting_example_min_words"
     android:inputType="number"
-    android:defaultValue="40"
+    android:defaultValue="5"
     android:selectAllOnFocus="true"
     app:allowDividerAbove="true"
     app:useSimpleSummaryProvider="true" />
 
 <EditTextPreference
-    android:key="preference_example_max_chars"
-    android:title="@string/setting_example_max_chars"
+    android:key="preference_example_max_words"
+    android:title="@string/setting_example_max_words"
     android:inputType="number"
-    android:defaultValue="150"
+    android:defaultValue="20"
     android:selectAllOnFocus="true"
     app:allowDividerAbove="true"
     app:useSimpleSummaryProvider="true" />
 ```
 
 ### 4. `presentation/SettingsFragment.kt`
-- Add validation for `preference_example_min_chars` and `preference_example_max_chars` (positive integer, min < max).
-- Existing validation pattern: see `INF_NUM_CHAR_LIMIT`/`SUP_NUM_CHAR_LIMIT` companion object constants.
+- Add validation for `preference_example_min_words` and `preference_example_max_words` (positive integer, min < max).
 
 ### 5. Layouts — add `button_example` to all three exam layouts
 
@@ -111,10 +112,10 @@ binding.buttonExample.setOnClickListener {
     binding.buttonExample.isEnabled = false
     lifecycleScope.launch {
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val minChars = prefs.getString("preference_example_min_chars", "40")?.toIntOrNull() ?: 40
-        val maxChars = prefs.getString("preference_example_max_chars", "150")?.toIntOrNull() ?: 150
+        val minWords = prefs.getString("preference_example_min_words", "5")?.toIntOrNull() ?: 5
+        val maxWords = prefs.getString("preference_example_max_words", "20")?.toIntOrNull() ?: 20
         val word = currentWordString() // bare word without article/hint
-        val result = exampleManagement.generateExample(word, wordType, minChars, maxChars)
+        val result = exampleManagement.generateExample(word, wordType, minWords, maxWords)
         result.fold(
             onSuccess = { sentence ->
                 AlertDialog.Builder(requireContext())
@@ -151,8 +152,8 @@ Add to `values/strings.xml`, `values-de/strings.xml`, `values-es/strings.xml`:
 |-----|----|----|----|
 | `example` | Example | Beispiel | Ejemplo |
 | `example_dialog_title` | Example sentence | Beispielsatz | Frase de ejemplo |
-| `setting_example_min_chars` | Min. sentence length (characters) | Min. Satzlänge (Zeichen) | Long. mínima de frase (caracteres) |
-| `setting_example_max_chars` | Max. sentence length (characters) | Max. Satzlänge (Zeichen) | Long. máxima de frase (caracteres) |
+| `setting_example_min_words` | Min. sentence length (words) | Min. Satzlänge (Wörter) | Long. mínima de frase (palabras) |
+| `setting_example_max_words` | Max. sentence length (words) | Max. Satzlänge (Wörter) | Long. máxima de frase (palabras) |
 | `example_unavailable` | Example sentences not available on this device | Beispielsätze auf diesem Gerät nicht verfügbar | Frases de ejemplo no disponibles en este dispositivo |
 | `example_downloading` | Downloading language model… | Sprachmodell wird heruntergeladen… | Descargando modelo de idioma… |
 

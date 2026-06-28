@@ -76,11 +76,37 @@ Per enabled test screen:
 - [ ] **Next** shows another random entry
 - [ ] Tap / swipe gestures work (swipe left = next, swipe down = show)
 - [ ] **Quit** returns to category list
+- [ ] **Example button is invisible** before Show is tapped
+- [ ] **Example button appears** after Show is tapped
+- [ ] **Example button disappears** again after Next is tapped
 
 Edge cases (see [KNOWN_ISSUES.md](KNOWN_ISSUES.md)):
 
 - [ ] List with **exactly 1 word** — does not crash on Next
 - [ ] List with **2+ words** — all entries can appear over multiple Next taps
+
+---
+
+## Example sentence (Gemini Nano)
+
+Run on a **device that supports Gemini Nano** (e.g. Pixel 8 or newer with AICore):
+
+- [ ] Tap **Show** on any flashcard → Example button appears
+- [ ] Tap **Example** → button disables while generating, re-enables after
+- [ ] A dialog appears with a German sentence containing the word
+- [ ] Dialog can be dismissed with OK
+- [ ] Tap **Next** → Example button disappears
+- [ ] Sentence word count is within the configured min/max range (default 5–20)
+
+On a **device without Gemini Nano support**:
+
+- [ ] Tap **Example** → a toast appears with the "not available on this device" message (no crash)
+
+Settings integration:
+
+- [ ] Change min/max word limits in Settings → next generated sentence respects the new values
+- [ ] Setting min ≥ max → rejected with error toast, value not saved
+- [ ] Non-numeric input → rejected with error toast, value not saved
 
 ---
 
@@ -111,6 +137,10 @@ Edge cases (see [KNOWN_ISSUES.md](KNOWN_ISSUES.md)):
 - [ ] Language: system / German / English / Spanish — UI updates after recreate
 - [ ] Minimum search characters: valid values (0–10) accepted
 - [ ] Invalid value shows error and is rejected
+- [ ] Min. example words: positive integer less than max → accepted
+- [ ] Max. example words: positive integer greater than min → accepted
+- [ ] Min. example words ≥ max → rejected with error toast
+- [ ] Max. example words ≤ min → rejected with error toast
 
 ---
 

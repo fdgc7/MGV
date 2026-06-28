@@ -36,6 +36,8 @@ Practice by category: all nouns, masculine/feminine/neuter nouns, verbs, adjecti
 - Verbs show infinitive forms; conjugations and meaning are revealed on demand.
 - Categories without loaded data are disabled until a CSV is imported.
 
+After revealing the meaning, an **Example** button appears. Tap it to generate a contextual German example sentence for the current word using Gemini Nano on-device (ML Kit GenAI). The result is shown in a dialog. If the device does not support Gemini Nano, a message is shown instead. Sentence length (in words) is configurable in Settings.
+
 ### Search
 
 Search across all loaded vocabulary (German text and meanings). Minimum character count is configurable in Settings (default: 4).
@@ -53,6 +55,7 @@ Static reference charts for:
 
 - UI language: system default, German, English, or Spanish
 - Minimum characters required before search runs
+- Min. / max. example sentence length in words (default: 5 / 20)
 
 ## Screenshots
 
@@ -62,6 +65,7 @@ _Screenshots can be added here._
 
 - Android 11+ (API 30)
 - Portrait orientation only
+- **Example sentence feature** requires a device that supports Gemini Nano (ML Kit AICore). The feature degrades gracefully on unsupported devices.
 
 ## Building
 
@@ -93,6 +97,7 @@ Navigation is handled with the Android Navigation Component (`nav_graph.xml`). U
 - AndroidX (AppCompat, Material, Navigation, Preference)
 - SQLite via `SQLiteOpenHelper`
 - Apache Commons CSV for file import
+- ML Kit GenAI (`com.google.mlkit:genai-prompt`) for on-device example sentence generation (Gemini Nano)
 
 ## For contributors
 

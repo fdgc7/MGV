@@ -2,20 +2,27 @@ package com.fdanielgarcia.mygermanvocabulary.presentation
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
+import com.fdanielgarcia.mygermanvocabulary.MGVApplication
 import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.data.*
 import com.fdanielgarcia.mygermanvocabulary.databinding.FragmentShowOtherBinding
 import com.fdanielgarcia.mygermanvocabulary.domain.*
 import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
+import kotlinx.coroutines.launch
 
 class ShowOtherFragment : Fragment() {
     val listManagement by lazy { ListManagement(requireActivity() as Activity) }
+    val exampleManagement by lazy { (requireActivity().application as MGVApplication).exampleManagement }
     private lateinit var vocabularyList: VocabularyList
     private lateinit var vocabulary: Vocabulary
 
@@ -51,6 +58,51 @@ class ShowOtherFragment : Fragment() {
 
         binding.buttonNext.setOnClickListener {
             showNextName()
+        }
+
+        binding.buttonExample.visibility = View.INVISIBLE
+        binding.buttonExample.setOnClickListener {
+            binding.buttonExample.isEnabled = false
+            lifecycleScope.launch {
+                val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+                val minWords = prefs.getString("preference_example_min_words", "5")?.toIntOrNull() ?: 5
+                val maxWords = prefs.getString("preference_example_max_words", "20")?.toIntOrNull() ?: 20
+                val word = when {
+                    vocabularyList is AdjectiveList   -> (vocabulary as Adjective).adjective
+                    vocabularyList is AdverbList      -> (vocabulary as Adverb).adverb
+                    vocabularyList is ConjunctionList -> (vocabulary as Conjunction).conjunction
+                    vocabularyList is PrepositionList -> (vocabulary as Preposition).preposition
+                    vocabularyList is PronounList     -> (vocabulary as Pronoun).pronoun
+                    else -> ""
+                }
+                val wordType = when {
+                    vocabularyList is AdjectiveList   -> getString(R.string.adjective)
+                    vocabularyList is AdverbList      -> getString(R.string.adverb)
+                    vocabularyList is ConjunctionList -> getString(R.string.conjunction)
+                    vocabularyList is PrepositionList -> getString(R.string.preposition)
+                    vocabularyList is PronounList     -> getString(R.string.pronoun)
+                    else -> ""
+                }
+                val result = exampleManagement.generateExample(word, wordType, minWords, maxWords)
+                result.fold(
+                    onSuccess = { sentence ->
+                        AlertDialog.Builder(requireContext())
+                            .setTitle(getString(R.string.example_dialog_title))
+                            .setMessage(sentence)
+                            .setPositiveButton(android.R.string.ok, null)
+                            .show()
+                    },
+                    onFailure = {
+                        val msg = if (it.message == "UNAVAILABLE") {
+                            getString(R.string.example_unavailable)
+                        } else {
+                            it.message
+                        }
+                        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
+                    }
+                )
+                binding.buttonExample.isEnabled = true
+            }
         }
 
         binding.constraintLayoutAll.setOnTouchListener(object :
@@ -127,6 +179,7 @@ class ShowOtherFragment : Fragment() {
                 binding.textViewMeaning.text = ""
             }
         }
+        binding.buttonExample.visibility = View.INVISIBLE
     }
 
     fun showMeaning() {
@@ -147,5 +200,6 @@ class ShowOtherFragment : Fragment() {
                 binding.textViewMeaning.text = (vocabulary as Pronoun).meaning
             }
         }
+        binding.buttonExample.visibility = View.VISIBLE
     }
 }

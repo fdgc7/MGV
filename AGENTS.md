@@ -13,6 +13,7 @@ MGV is an offline Android app for personal German vocabulary study. Users import
 - **Navigation:** Android Navigation Component (`app/src/main/res/navigation/nav_graph.xml`)
 - **Persistence:** `SQLiteOpenHelper` in `data/VocabularyDB.kt`
 - **CSV import:** Apache Commons CSV (`use_cases/FileManagement.kt`)
+- **On-device AI:** ML Kit GenAI (`com.google.mlkit:genai-prompt`) via `use_cases/ExampleManagement.kt` — runs fully offline on Gemini Nano
 - **SDK:** minSdk 30, compileSdk/targetSdk 35
 - **AGP:** 8.13.2 | **Kotlin:** 2.3.0 | **Gradle:** 9.5.0
 
@@ -38,7 +39,7 @@ Follow the existing layered layout:
 | Use cases | `use_cases/` | Business logic — no Android UI |
 | Presentation | `presentation/` | Activities, Fragments, adapters |
 
-- Application singleton: `MGVApplication` holds the shared `VocabularyDB` instance.
+- Application singleton: `MGVApplication` holds the shared `VocabularyDB` instance and the shared `ExampleManagement` instance.
 - `MainActivity` hosts the nav graph; grammar references are separate Activities.
 - Locale handling: `LocaleManagement`, `PreferredLocale`, `BaseActivity`.
 
@@ -48,6 +49,7 @@ Follow the existing layered layout:
 - `use_cases/FileManagement.kt` — CSV import; column names are German
 - `use_cases/ListManagement.kt` — load lists for tests and search
 - `use_cases/VocabularyManagement.kt` — display helpers (strip plural hints, verb hints)
+- `use_cases/ExampleManagement.kt` — on-device example sentence generation via ML Kit GenAI (Gemini Nano); singleton shared through `MGVApplication`
 - `presentation/DefaultFragment.kt` — home: Load Files, Vocabulary Test, Search
 - `res/values/strings.xml` (+ `values-de/`, `values-es/`) — all user-facing strings
 
@@ -84,7 +86,7 @@ Add new user-facing strings to **all three** when changing UI text.
 ## Don't
 
 - Do not introduce Jetpack Compose without an explicit request.
-- Do not add network dependencies — the app is fully offline.
+- Do not add network dependencies — the app is fully offline. Exception: `com.google.mlkit:genai-prompt` is allowed because Gemini Nano runs entirely on-device with no network traffic.
 - Do not change CSV column headers casually; they must match user file formats.
 - Do not commit secrets, keystores, or signing credentials.
 - Do not refactor unrelated code when fixing a targeted issue.
