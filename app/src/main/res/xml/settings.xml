@@ -24,6 +24,7 @@
     <EditTextPreference
         android:key="preference_example_min_words"
         android:title="@string/setting_example_min_words"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
         android:inputType="number"
         android:defaultValue="5"
         android:selectAllOnFocus="true"
@@ -33,6 +34,7 @@
     <EditTextPreference
         android:key="preference_example_max_words"
         android:title="@string/setting_example_max_words"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
         android:inputType="number"
         android:defaultValue="20"
         android:selectAllOnFocus="true"
