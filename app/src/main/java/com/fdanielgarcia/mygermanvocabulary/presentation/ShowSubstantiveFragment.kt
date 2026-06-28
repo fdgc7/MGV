@@ -18,6 +18,7 @@ import com.fdanielgarcia.mygermanvocabulary.use_cases.VocabularyManagement
 
 class ShowSubstantiveFragment : Fragment() {
     val vocabularyManagement by lazy { VocabularyManagement() }
+    val listManagement by lazy { ListManagement(requireActivity() as Activity) }
     private lateinit var substantiveList: SubstantiveList
     private lateinit var substantive: Substantive
 
@@ -32,7 +33,8 @@ class ShowSubstantiveFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        substantiveList = arguments?.getParcelable<SubstantiveList>("List")!!
+        val vocabularyType = arguments?.getString("vocabularyType") ?: "AllSubstantives"
+        substantiveList = listManagement.loadList(vocabularyType) as SubstantiveList
 
         _binding = FragmentShowSubstantiveBinding.inflate(inflater, container, false)
         return binding.root

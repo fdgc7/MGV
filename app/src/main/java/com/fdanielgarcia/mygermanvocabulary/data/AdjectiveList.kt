@@ -10,7 +10,7 @@ class AdjectiveList() : VocabularyList(), Parcelable {
 
     override fun randomElement(): Adjective {
         val rand = Random(System.nanoTime())
-        return list[(0 until list.size - 1).random(rand)] as Adjective
+        return list[list.indices.random(rand)] as Adjective
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

@@ -10,7 +10,7 @@ class AdverbList() : VocabularyList(), Parcelable {
 
     override fun randomElement(): Adverb {
         val rand = Random(System.nanoTime())
-        return list[(0 until list.size - 1).random(rand)] as Adverb
+        return list[list.indices.random(rand)] as Adverb
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

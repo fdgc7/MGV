@@ -10,7 +10,7 @@ class PrepositionList() : VocabularyList(), Parcelable {
 
     override fun randomElement(): Preposition {
         val rand = Random(System.nanoTime())
-        return list[(0 until list.size - 1).random(rand)] as Preposition
+        return list[list.indices.random(rand)] as Preposition
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

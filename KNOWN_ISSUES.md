@@ -8,30 +8,19 @@ Check this file when fixing bugs, before releases, or when touching related code
 
 ## High priority
 
-### `randomElement()` off-by-one and single-item crash
+### ~~`randomElement()` off-by-one and single-item crash~~ ✓ Fixed 2026-06-28
 
 **Files:** `data/*List.kt` (`SubstantiveList`, `VerbList`, `PronounList`, and all other typed lists), `data/VocabularyList.kt`
 
-**Problem:** `randomElement()` uses `(0 until list.size - 1)`, which:
-
-- Skips the **last** item when the list has more than one entry.
-- Throws when the list has **exactly one** entry (`random()` on an empty range).
-
-**Impact:** Vocabulary tests can crash or never show some words.
-
-**Suggested fix:** Use `(0 until list.size)` or `list.random()` when `list.isNotEmpty()`.
+**Fix:** Replaced `(0 until list.size - 1).random(rand)` with `list.indices.random(rand)` in all 8 list classes. Last item is now reachable and a single-element list no longer crashes.
 
 ---
 
-### Incomplete `Parcelable` implementation for vocabulary lists
+### ~~Incomplete `Parcelable` implementation for vocabulary lists~~ ✓ Fixed 2026-06-28
 
-**Files:** `data/VocabularyList.kt`, `data/*List.kt`
+**Files:** `data/VocabularyList.kt`, `data/*List.kt`, `presentation/TestVocabularyFragment.kt`, `presentation/ShowSubstantiveFragment.kt`, `presentation/ShowVerbFragment.kt`, `presentation/ShowOtherFragment.kt`
 
-**Problem:** `writeToParcel()` is empty and `createFromParcel()` does not restore list contents.
-
-**Impact:** In-process navigation works today, but **process death** or **configuration changes** that recreate fragments from saved state may lose the word list passed in a `Bundle`.
-
-**Suggested fix:** Properly parcel the `list` contents, or pass only a category key and reload from SQLite in the target fragment.
+**Fix:** Removed Parcel-based list transfer entirely. `TestVocabularyFragment` now passes only the `vocabularyType` string key in the Bundle. Each show fragment receives the key and calls `ListManagement.loadList()` itself, reloading from SQLite. This also eliminates the deprecated `getParcelable<T>()` calls.
 
 ---
 

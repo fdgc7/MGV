@@ -10,7 +10,7 @@ class PronounList() : VocabularyList(), Parcelable {
 
     override fun randomElement(): Pronoun {
         val rand = Random(System.nanoTime())
-        return list[(0 until list.size - 1).random(rand)] as Pronoun
+        return list[list.indices.random(rand)] as Pronoun
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

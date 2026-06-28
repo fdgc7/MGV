@@ -10,7 +10,7 @@ class SubstantiveList() : VocabularyList(), Parcelable {
 
     override fun randomElement(): Substantive {
         val rand = Random(System.nanoTime())
-        return list[(0 until list.size - 1).random(rand)] as Substantive
+        return list[list.indices.random(rand)] as Substantive
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

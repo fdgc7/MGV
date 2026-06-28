@@ -1,6 +1,7 @@
 package com.fdanielgarcia.mygermanvocabulary.presentation
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import com.fdanielgarcia.mygermanvocabulary.R
 import com.fdanielgarcia.mygermanvocabulary.data.*
 import com.fdanielgarcia.mygermanvocabulary.databinding.FragmentShowOtherBinding
 import com.fdanielgarcia.mygermanvocabulary.domain.*
+import com.fdanielgarcia.mygermanvocabulary.use_cases.ListManagement
 
 class ShowOtherFragment : Fragment() {
+    val listManagement by lazy { ListManagement(requireActivity() as Activity) }
     private lateinit var vocabularyList: VocabularyList
     private lateinit var vocabulary: Vocabulary
 
@@ -27,7 +30,8 @@ class ShowOtherFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        vocabularyList = arguments?.getParcelable<VocabularyList>("List")!!
+        val vocabularyType = arguments?.getString("vocabularyType") ?: ""
+        vocabularyList = listManagement.loadList(vocabularyType)
 
         _binding = FragmentShowOtherBinding.inflate(inflater, container, false)
         return binding.root

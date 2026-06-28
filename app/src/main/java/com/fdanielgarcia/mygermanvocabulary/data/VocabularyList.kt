@@ -18,7 +18,7 @@ open class VocabularyList() : Parcelable {
 
     open fun randomElement(): Vocabulary {
         val rand = Random(System.nanoTime())
-        return list[(0 until list.size - 1).random(rand)]
+        return list[list.indices.random(rand)]
     }
 
     private fun allElements(): List<Vocabulary> {
